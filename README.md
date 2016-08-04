@@ -21,6 +21,7 @@ Control | Description | Creator
 3.3.2 | Ensure that the actions of individual information system users can be uniquely traced to those users tso they can be hold accountable for their actions | Abigail Watson
 3.4.3 | Track, review, approve/disapprove, and audit changes to infomration systems | Daunte Baccus
 
-Documentation for each control can be found both on this github repo and on box. 
+The presentation for this PoC can be located in the resource folder. Documentation of each control can be found on the wiki page of this repo.
 
-Thank You.
+Thank You!
+
