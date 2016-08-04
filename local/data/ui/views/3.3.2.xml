@@ -1,0 +1,138 @@
+<form>
+  <label>3.3.2: Ensure that the actions of individual information system users can be uniquely traced to those users so they can be held accountable for their actions</label>
+  <fieldset submitButton="false">
+    <input type="time" token="timePicker" searchWhenChanged="true">
+      <label>Select the Time Range</label>
+      <default>
+        <earliest>-15m</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <single>
+        <title>Missing Forwarders</title>
+        <search>
+          <query>| inputlookup dmc_forwarder_assets | search status="missing"  | convert ctime(last_connected) | dedup hostname, status | stats count</query>
+          <earliest>$timePicker.earliest$</earliest>
+          <latest>$timePicker.latest$</latest>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x65a637","0xd93f3c"]</option>
+        <option name="rangeValues">[0]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+        <option name="linkView">search</option>
+      </single>
+    </panel>
+    <panel>
+      <table>
+        <title>Forwarder Status</title>
+        <search>
+          <query>| inputlookup dmc_forwarder_assets  | convert ctime(last_connected) | dedup hostname, status | table hostname, os, last_connected, status | rename hostname as Host, os as "Operating System", last_connected as "Last Time Connected", status as Status</query>
+          <earliest>$timePicker.earliest$</earliest>
+          <latest>$timePicker.latest$</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart>
+        <title>Windows Event Task Categories</title>
+        <search>
+          <query>eventtype="wineventlog_security"  | stats count by TaskCategory  | sort -count</query>
+          <earliest>$timePicker.earliest$</earliest>
+          <latest>$timePicker.latest$</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">0</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">bar</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.showDataLabels">all</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">none</option>
+        <option name="list.drilldown">full</option>
+        <option name="list.wrap">1</option>
+        <option name="maxLines">5</option>
+        <option name="raw.drilldown">full</option>
+        <option name="table.drilldown">all</option>
+        <option name="table.wrap">1</option>
+        <option name="type">list</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Windows Security Event Logs in last 5 minutes</title>
+        <search>
+          <query>eventtype="wineventlog_security"  | table _time, host, user, TaskCategory  | rename host as Host, user as "Account Name", TaskCategory as Function</query>
+          <earliest>rt-5m</earliest>
+          <latest>rt</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+            <h1>
+                3.3.2: Ensure that the actions of individual information system users can be uniquely traced to those users so they can be held accountable for their actions
+            </h1>
+        <h2> NIST 800 Mapping </h2>
+        <h3>
+          <a href="https://web.nvd.nist.gov/view/800-53/Rev4/control?controlName=AU-2">NIST 800-53 AU-2 - AUDIT EVENTS</a>
+        </h3>
+           <h3>
+          <a href="https://web.nvd.nist.gov/view/800-53/Rev4/control?controlName=AU-3">NIST 800-53 AU-3 - CONTENT OF AUDIT RECORDS</a>
+        </h3>
+           <h3>
+          <a href="https://web.nvd.nist.gov/view/800-53/Rev4/control?controlName=AU-6">NIST 800-53 AU-6 - AUDIT REVIEW, ANALYSIS, AND REPORTING</a>
+        </h3>
+         <h3>
+          <a href="https://web.nvd.nist.gov/view/800-53/Rev4/control?controlName=AU-12">NIST 800-53 AU-12 - AUDIT GENERATION</a>
+        </h3>
+         
+      </html>
+    </panel>
+  </row>
+</form>

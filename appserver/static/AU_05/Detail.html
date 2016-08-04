@@ -1,0 +1,61 @@
+  <br/>
+  <div>
+    <h1>AU-5 RESPONSE TO AUDIT PROCESSING FAILURES</h1><br/>
+
+    <h2>Control</h2>
+    <p>
+      The information system:
+      <ol class="loweralpha">
+        <li>Alerts designated organizational officials in the event of an audit processing failure; and</li>
+        <li>Takes the following additional actions: [Assignment: organization-defined actions to be taken
+        (e.g., shut down information system, overwrite oldest audit records, stop generating audit
+        records)].</li>
+      </ol>
+    </p>
+  </div>
+
+  <div>
+    <h2>Supplemental Guidance</h2>
+    <p>
+      Audit processing failures include, for example, software/hardware errors,
+      failures in the audit capturing mechanisms, and audit storage capacity being reached or exceeded.
+      Related control: AU-4.
+    </p>
+  </div>
+
+  <div>
+    <h2>Control Enhancements</h2>
+    <ol class="decimal">
+      <li>The information system provides a warning when allocated audit record storage volume reaches
+          [Assignment: organization-defined percentage] of maximum audit record storage capacity.</li>
+      <li>The information system provides a real-time alert when the following audit failure events occur:
+          [Assignment: organization-defined audit failure events requiring real-time alerts].</li>
+      <li>The information system enforces configurable traffic volume thresholds representing auditing
+          capacity for network traffic and [Selection: rejects or delays] network traffic above those
+          thresholds.</li>
+      <li>The information system invokes a system shutdown in the event of an audit failure, unless an
+          alternative audit capability exists.</li>
+    </ol>
+  </div>
+
+  <div>
+    <h2>References</h2>
+    <p>None</p>
+  </div>
+
+  <div>
+    <h2>ICS Supplemental Guidance</h2>
+    <p>None</p>
+  </div>
+
+  <div>
+    <h2>Priority and Baseline Allocation</h2>
+    <table border="1" cellpadding="5" bgcolor="#ddd">
+      <tr>
+        <td><b>P1</b></td>
+        <td><b>LOW</b> AU-5</td>
+        <td><b>MOD</b> AU-5</td>
+        <td><b>HIGH</b> AU-5 (1) (2)</td>
+      </tr>
+    </table>
+  </div>

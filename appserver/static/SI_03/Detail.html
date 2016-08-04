@@ -1,0 +1,98 @@
+  <br/>
+  <div>
+    <h1>SI-3 MALICIOUS CODE PROTECTION</h1><br/>
+
+    <h2>Control</h2>
+    <p>
+      The organization:
+      <ol class="loweralpha">
+        <li>Employs malicious code protection mechanisms at information system entry and exit points
+            and at workstations, servers, or mobile computing devices on the network to detect and
+            eradicate malicious code:
+          <ul>
+            <li>Transported by electronic mail, electronic mail attachments, web accesses, removable
+                media, or other common means; or</li>
+            <li>Inserted through the exploitation of information system vulnerabilities;</li>
+          </ul>
+        </li>
+        <li>Updates malicious code protection mechanisms (including signature definitions) whenever
+            new releases are available in accordance with organizational configuration management
+            policy and procedures;</li>
+        <li>Configures malicious code protection mechanisms to:
+          <ul>
+            <li>Perform periodic scans of the information system [Assignment: organization-defined
+                frequency] and real-time scans of files from external sources as the files are downloaded,
+                opened, or executed in accordance with organizational security policy; and</li>
+            <li>[Selection (one or more): block malicious code; quarantine malicious code; send alert to
+                administrator; [Assignment: organization-defined action]] in response to malicious code
+                detection; and</li>
+          </ul>
+        </li>
+        <li>Addresses the receipt of false positives during malicious code detection and eradication and
+            the resulting potential impact on the availability of the information system.</li>
+      </ol>
+    </p>
+  </div>
+
+  <div>
+    <h2>Supplemental Guidance</h2>
+    <p>
+      Information system entry and exit points include, for example, firewalls,
+      electronic mail servers, web servers, proxy servers, and remote-access servers. Malicious code
+      includes, for example, viruses, worms, Trojan horses, and spyware. Malicious code can also be
+      encoded in various formats (e.g., UUENCODE, Unicode) or contained within a compressed file.
+      Removable media includes, for example, USB devices, diskettes, or compact disks. A variety of
+      technologies and methods exist to limit or eliminate the effects of malicious code attacks.
+      Pervasive configuration management and strong software integrity controls may be effective in
+      preventing execution of unauthorized code. In addition to commercial off-the-shelf software,
+      malicious code may also be present in custom-built software. This could include, for example,
+      logic bombs, back doors, and other types of cyber attacks that could affect organizational missions
+      and business functions. Traditional malicious code protection mechanisms are not built to detect
+      such code. In these situations, organizations must rely instead on other risk mitigation measures to
+      include, for example, secure coding practices, trusted procurement processes, configuration
+      management and control, and monitoring practices to help ensure that software does not perform
+      functions other than those intended. Related controls: SA-4, SA-8, SA-12, SA-13, SI-4, SI-7.
+    </p>
+  </div>
+
+  <div>
+    <h2>Control Enhancements</h2>
+    <ol class="decimal">
+      <li>The organization centrally manages malicious code protection mechanisms.</li>
+      <li>The information system automatically updates malicious code protection mechanisms (including
+          signature definitions).</li>
+      <li>The information system prevents non-privileged users from circumventing malicious code
+          protection capabilities.</li>
+      <li>The information system updates malicious code protection mechanisms only when directed by a
+          privileged user.</li>
+      <li>The organization does not allow users to introduce removable media into the information system.</li>
+      <li>The organization tests malicious code protection mechanisms [Assignment: organization-defined
+          frequency] by introducing a known benign, non-spreading test case into the information system
+          and subsequently verifying that both detection of the test case and associated incident reporting
+          occur, as required.</li>
+    </ol>
+  </div>
+
+  <div>
+    <h2>References</h2>
+    <p>
+      NIST Special Publication 800-83.
+    </p>
+  </div>
+
+  <div>
+    <h2>ICS Supplemental Guidance</h2>
+    <p>None</p>
+  </div>
+
+  <div>
+    <h2>Priority and Baseline Allocation</h2>
+    <table border="1" cellpadding="5" bgcolor="#ddd">
+      <tr>
+        <td><b>P1</b></td>
+        <td><b>LOW</b> SI-3</td>
+        <td><b>MOD</b> SI-3 (1) (2) (3)</td>
+        <td><b>HIGH</b> SI-3 (1) (2) (3)</td>
+      </tr>
+    </table>
+  </div>

@@ -1,0 +1,113 @@
+<div class="control_help">
+
+  <h2>Control Help</h2>
+
+  <div class="control_help_left">
+
+    <p>
+      This application was created as a framework. Each search utilizes eventtypes and tagging in order
+      to more easily customize the integration of other data sources.  This help section outlines the
+      definition of the searches, and supplies a listing of the fields which may be used
+      for reporting.  Please take a look at the
+        <a href="${make_url(['app',APP['id'],'about'])}" target=_blank>About</a>
+      page for more information on customization.
+    </p>
+
+    <p>
+      This control utilizes data from the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','installed_apps(1)'], _qs=dict(action='edit'))}" target=_blank>`installed_apps`</a>
+      </b>, and
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','installed_updates(1)'], _qs=dict(action='edit'))}" target=_blank>`installed_updates`</a>
+      </b>
+      search macros.
+    </p>
+    
+    <h3>Installed Applications</h3>
+    <p>
+      The
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','installed_apps(1)'], _qs=dict(action='edit'))}" target=_blank>`installed_apps`</a>
+      </b>
+      macro is defined as:<br/><br/>
+
+      <code>
+        tag=application tag=report NOT tag=update NOT tag=config $filter$ `installed_apps_filter`<br/>&nbsp;&nbsp;
+        | eval dest = coalesce(dest, host)<br/>&nbsp;&nbsp;
+        | fillnull value=unknown dest, Publisher, DisplayName, DisplayVersion, InstallLocation
+      </code>
+    </p>
+
+    <p>
+      The results of the search are deduplicated via:<br/><br/>
+
+      <code>
+        ... | dedup dest, DisplayName, InstallLocation
+      </code>
+    </p>
+
+    <p>
+      In the event that there are filter-based modifications to the search that you'd
+      like to employ permanently, you may edit the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','installed_apps_filter'], _qs=dict(action='edit'))}" target=_blank>`installed_apps_filter`</a>
+      </b> to
+      affect the results.  Further adjustments may require  modifying the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','installed_apps(1)'], _qs=dict(action='edit'))}" target=_blank>`installed_apps`</a>
+      </b> macro itself.
+    </p>
+
+    <p>
+      Recommended Fields:
+      <ul>
+        <li>dest = the host on which the application was installed</li>
+        <li>Publisher = the software publisher</li>
+        <li>DisplayName = the friendly name of the application</li>
+        <li>DisplayVersion = the version of the application</li>
+        <li>InstallLocation = the installation location of the application</li>
+      </ul>
+    </p>
+  </div>
+
+  <div class="control_help_right">
+
+    <h3>Updates</h3>
+    <p>
+      The
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','installed_updates(1)'], _qs=dict(action='edit'))}" target=_blank>`installed_updates`</a>
+      </b> macro is defined as:<br/><br/>
+
+      <code>
+        tag=system OR tag=application tag=update $filter$ `installed_updates_filter`<br/>&nbsp;&nbsp;
+        | eval package = coalesce(package, Message, signature)<br/>&nbsp;&nbsp;
+        | fillnull value=unknown dest, vendor, package, package_title
+      </code>
+    </p>
+
+    <p>
+      In the event that there are filter-based modifications to the search that you'd
+      like to employ permanently, you may edit the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','installed_updates_filter'], _qs=dict(action='edit'))}" target=_blank>`installed_updates_filter`</a>
+      </b> to
+      affect the results.  Further adjustments may require  modifying the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','installed_updates(1)'], _qs=dict(action='edit'))}" target=_blank>`installed_updates`</a>
+      </b> macro itself.
+    </p>
+
+    <p>
+      Recommended Fields:
+      <ul>
+        <li>dest = the host on which the update took place</li>
+        <li>vendor = the software vendor</li>
+        <li>package = the update name</li>
+        <li>package_title = a simple description of the package</li>
+      </ul>
+    </p>
+  </div>
+
+</div>

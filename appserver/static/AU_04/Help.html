@@ -1,0 +1,107 @@
+<div class="control_help">
+
+  <h2>Control Help</h2>
+
+  <div class="control_help_left">
+
+    <p>
+      This application was created as a framework. Each search utilizes eventtypes and tagging in order
+      to more easily customize the integration of other data sources.  This help section outlines the
+      definition of the searches, and supplies a listing of the fields which may be used
+      for reporting.  Please take a look at the
+        <a href="${make_url(['app',APP['id'],'about'])}" target=_blank>About</a>
+      page for more information on customization.
+    </p>
+
+    <p>
+      This control utilizes data from the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','audit_write_failures(1)'], _qs=dict(action='edit'))}" target=_blank>`audit_write_failures`</a>
+      </b>, and
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','low_disk_space(1)'], _qs=dict(action='edit'))}" target=_blank>`low_disk_space`</a>
+      </b>
+      search macros.
+    </p>
+    
+    <h3>Audit Write Failures</h3>
+    <p>
+      The
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','audit_write_failures(1)'], _qs=dict(action='edit'))}" target=_blank>`audit_write_failures`</a>
+      </b>
+      macro is defined as:<br/><br/>
+
+      <code>
+        tag=audit tag=access tag=write action=failure $filter$ `audit_write_failures_filter`
+      </code>
+    </p>
+
+    <p>
+      In the event that there are filter-based modifications to the search that you'd
+      like to employ permanently, you may edit the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','audit_write_failures_filter'], _qs=dict(action='edit'))}" target=_blank>`audit_write_failures_filter`</a>
+      </b> to
+      affect the results.  Further adjustments may require  modifying the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','audit_write_failures(1)'], _qs=dict(action='edit'))}" target=_blank>`audit_write_failures`</a>
+      </b> macro itself.
+    </p>
+
+    <p>
+      Recommended Fields:
+      <ul>
+        <li>dest = the host on which the event took place</li>
+      </ul>
+    </p>
+  </div>
+
+  <div class="control_help_right">
+
+    <h3>Low Disk Space</h3>
+    <p>
+      The
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','low_disk_space(1)'], _qs=dict(action='edit'))}" target=_blank>`low_disk_space`</a>
+      </b> macro is defined as:<br/><br/>
+
+      <code>
+        tag=disk tag=report `low_disk_threshold` $filter$ `low_disk_space_filter`<br/>&nbsp;&nbsp;
+        | eval volume=coalesce(mount, instance, Name)<br/>&nbsp;&nbsp;
+        | dedup host, volume<br/>&nbsp;&nbsp;
+        | table host, volume, FreeMBytes, PercentFreeSpace<br/>&nbsp;&nbsp;
+      </code>
+    </p>
+
+    <p>
+      In the event that there are filter-based modifications to the search that you'd
+      like to employ permanently, you may edit the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','low_disk_space_filter'], _qs=dict(action='edit'))}" target=_blank>`low_disk_space_filter`</a>
+      </b> to
+      affect the results.  Further adjustments may require  modifying the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','low_disk_space(1)'], _qs=dict(action='edit'))}" target=_blank>`low_disk_space`</a>
+      </b> macro itself.
+    </p>
+
+    <p>
+      The
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','low_disk_threshold'], _qs=dict(action='edit'))}" target=_blank>`low_disk_threshold`</a>
+      </b> should be configured properly with your organization's desired threshold.
+    </p>
+
+    <p>
+      Recommended Fields:
+      <ul>
+        <li>dest = the affected host</li>
+        <li>volume = the affected disk drive or filesystem</li>
+        <li>FreeMBytes = free disk space of the volume in megabytes</li>
+        <li>PercentFreeSpace = free disk space percentage of the volume</li>
+      </ul>
+    </p>
+  </div>
+
+</div>

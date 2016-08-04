@@ -1,0 +1,99 @@
+<div class="control_help">
+
+  <h2>Control Help</h2>
+
+  <div class="control_help_left">
+
+    <p>
+      This application was created as a framework. Each search utilizes eventtypes and tagging in order
+      to more easily customize the integration of other data sources.  This help section outlines the
+      definition of the searches, and supplies a listing of the fields which may be used
+      for reporting.  Please take a look at the
+        <a href="${make_url(['app',APP['id'],'about'])}" target=_blank>About</a>
+      page for more information on customization.
+    </p>
+
+    <p>
+      This control utilizes data from the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','session_lock(1)'], _qs=dict(action='edit'))}" target=_blank>`session_lock`</a>
+      </b> and
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','session_unlock(1)'], _qs=dict(action='edit'))}" target=_blank>`session_unlock`</a>
+      </b>
+      search macros.  Additionally, <b>lookups/account_mapping.csv</b> is utilized as a source for account_type and organization fields, based on the user.
+    </p>
+    
+    <h3>Session Locks</h3>
+    <p>
+      The
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','session_lock(1)'], _qs=dict(action='edit'))}" target=_blank>`session_lock`</a>
+      </b>
+      macro is defined as:<br/><br/>
+
+      <code>
+        tag=authentication tag=lock $filter$ `session_lock_filter` | lookup account_mapping user
+      </code>
+    </p>
+
+    <p>
+      In the event that there are filter-based modifications to the search that you'd
+      like to employ permanently, you may edit the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','session_lock_filter'], _qs=dict(action='edit'))}" target=_blank>`session_lock_filter`</a>
+      </b> to
+      affect the results.  Further adjustments may require  modifying the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','session_lock(1)'], _qs=dict(action='edit'))}" target=_blank>`session_lock`</a>
+      </b> macro itself.
+    </p>
+
+    <p>
+      Recommended Fields:
+      <ul>
+        <li>user = the name of the affected user</li>
+        <li>dest = the host on which the lock took place</li>
+      </ul>
+    </p>
+
+  </div>
+
+  <div class="control_help_right">
+
+    <h3>Session Unlocks</h3>
+    <p>
+      The
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','session_unlock(1)'], _qs=dict(action='edit'))}" target=_blank>`session_unlock`</a>
+      </b>
+      macro is defined as:<br/><br/>
+
+      <code>
+        tag=authentication tag=unlock $filter$ `session_unlock_filter` | lookup account_mapping user
+      </code>
+    </p>
+
+    <p>
+      In the event that there are filter-based modifications to the search that you'd
+      like to employ permanently, you may edit the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','session_unlock_filter'], _qs=dict(action='edit'))}" target=_blank>`session_unlock_filter`</a>
+      </b> to
+      affect the results.  Further adjustments may require  modifying the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','session_unlock(1)'], _qs=dict(action='edit'))}" target=_blank>`session_unlock`</a>
+      </b> macro itself.
+    </p>
+
+    <p>
+      Recommended Fields:
+      <ul>
+        <li>user = the name of the affected user</li>
+        <li>dest = the host on which the lock took place</li>
+      </ul>
+    </p>
+
+  </div>
+
+</div>

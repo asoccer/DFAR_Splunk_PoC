@@ -1,0 +1,159 @@
+<div class="control_help">
+
+  <h2>Control Help</h2>
+
+  <div class="control_help_left">
+
+    <p>
+      This application was created as a framework. Each search utilizes eventtypes and tagging in order
+      to more easily customize the integration of other data sources.  This help section outlines the
+      definition of the searches, and supplies a listing of the fields which may be used
+      for reporting.  Please take a look at the
+        <a href="${make_url(['app',APP['id'],'about'])}" target=_blank>About</a>
+      page for more information on customization.
+    </p>
+
+    <p>
+      This control utilizes data from the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','logins(1)'], _qs=dict(action='edit'))}" target=_blank>`logins`</a>
+      </b>,
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','command_execution(1)'], _qs=dict(action='edit'))}" target=_blank>`command_execution`</a>
+      </b>, and
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','object_access(1)'], _qs=dict(action='edit'))}" target=_blank>`object_access`</a>
+      </b>
+      search macros.  Additionally, <b>lookups/account_mapping.csv</b> is utilized as a source for account_type and organization fields, based on the user,
+      and <b>lookups/privileged_commands.csv</b> is used to add an is_privileged field to specify that an app should be considered privileged.
+    </p>
+    
+    <h3>Device Logins</h3>
+    <p>
+      The
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','logins(1)'], _qs=dict(action='edit'))}" target=_blank>`logins`</a>
+      </b>
+      macro is defined as:<br/><br/>
+
+      <code>
+        tag=authentication user=* $filter$ `login_filter`<br/>&nbsp;&nbsp;
+        | lookup account_mapping user<br/>&nbsp;&nbsp;
+        | fillnull value=unknown user, app, src, src_ip, dest, action, account_type, organization
+      </code>
+    </p>
+
+    <p>
+      In the event that there are filter-based modifications to the search that you'd
+      like to employ permanently, you may edit the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','logins_filter'], _qs=dict(action='edit'))}" target=_blank>`logins_filter`</a>
+      </b> to
+      affect the results.  Further adjustments may require  modifying the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','logins(1)'], _qs=dict(action='edit'))}" target=_blank>`logins`</a>
+      </b> macro itself.
+    </p>
+
+    <p>
+      Recommended Fields:
+      <ul>
+        <li>user = the user logging in</li>
+        <li>app = the login app (i.e. su, win:remote, etc)</li>
+        <li>src = source host of the login</li>
+        <li>src_ip = source IP address of the login</li>
+        <li>dest = destination host of the login</li>
+        <li>action = this should state the success status (success or failure) of the event</li>
+      </ul>
+    </p>
+
+    <h3>Command Executions</h3>
+    <p>
+      The
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','command_execution(1)'], _qs=dict(action='edit'))}" target=_blank>`command_execution`</a>
+      </b> macro is defined as:<br/><br/>
+
+      <code>
+        tag=process tag=execute user=* $filter$ `command_execution_filter`<br/>&nbsp;&nbsp;
+        | lookup account_mapping user<br/>&nbsp;&nbsp;
+        | fillnull value=unknown user, app, dest, account_type, organization<br/>&nbsp;&nbsp;
+        | search NOT account_type=system
+      </code>
+    </p>
+
+    <p>
+      In the event that there are filter-based modifications to the search that you'd
+      like to employ permanently, you may edit the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','command_execution_filter'], _qs=dict(action='edit'))}" target=_blank>`command_execution_filter`</a>
+      </b> to
+      affect the results.  Further adjustments may require  modifying the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','command_execution(1)'], _qs=dict(action='edit'))}" target=_blank>`command_execution`</a>
+      </b> macro itself.
+    </p>
+
+    <p>
+      Recommended Fields:
+      <ul>
+        <li>user = the name of the locked out user</li>
+        <li>dest = destination host of the execution</li>
+        <li>app = the executed command</li>
+      </ul>
+    </p>
+  </div>
+
+  <div class="control_help_right">
+
+    <h3>Object Access</h3>
+    <p>
+      The
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','object_access(1)'], _qs=dict(action='edit'))}" target=_blank>`object_access`</a>
+      </b> macro is defined as:<br/><br/>
+
+      <code>
+        tag=resource tag=access user=* $filter$ `object_access_filter`<br/>&nbsp;&nbsp;
+        | lookup account_mapping user<br/>&nbsp;&nbsp;
+        | fillnull value=unknown user, dest, action, Object_Name, account_type, organization
+      </code>
+    </p>
+
+    <p>
+      In the event that there are filter-based modifications to the search that you'd
+      like to employ permanently, you may edit the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','object_access_filter'], _qs=dict(action='edit'))}" target=_blank>`object_access_filter`</a>
+      </b> to
+      affect the results.  Further adjustments may require  modifying the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','object_access(1)'], _qs=dict(action='edit'))}" target=_blank>`object_access`</a>
+      </b> macro itself.
+    </p>
+
+    <p>
+      Recommended Fields:
+      <ul>
+        <li>user = the user attempting access</li>
+        <li>dest = host of the object access</li>
+        <li>action = this should state the success status (success or failure) of the event</li>
+        <li>Object_Name = the object which was accessed</li>
+      </ul>
+    </p>
+
+    <h3>Lookups</h3>
+    <p>
+      Some of the information in this report is provided by a lookup in order to add account_type and organization fields.
+      The account_type should be one of: system, guest, temporary, application, group, or individual.  By default, the 
+      account_type for a user will be set to "individual", if nothing is specified.  The organization field should be
+      populated with the user's parent organization at the desired granularity.
+    </p>
+
+    <p>
+      The privileged_commands.csv provides a simple mapping of command name (e.g. at.exe) to a boolean value of its "is_privileged"
+      status (e.g. true or false).  Unspecified applications are considers unprivileged by default.
+    </p>
+  </div>
+
+</div>

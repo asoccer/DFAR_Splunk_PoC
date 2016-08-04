@@ -1,0 +1,231 @@
+  <br/>
+  <div>
+    <h1>SC-7 BOUNDARY PROTECTION</h1><br/>
+
+    <h2>Control</h2>
+    <p>
+      The information system:
+      <ol class="loweralpha">
+        <li>Monitors and controls communications at the external boundary of the system and at key
+            internal boundaries within the system; and</li>
+        <li>Connects to external networks or information systems only through managed interfaces
+            consisting of boundary protection devices arranged in accordance with an organizational
+            security architecture.</li>
+      </ol>
+    </p>
+  </div>
+
+  <div>
+    <h2>Supplemental Guidance</h2>
+    <p>
+      Restricting external web traffic only to organizational web servers within
+      managed interfaces and prohibiting external traffic that appears to be spoofing an internal address
+      as the source are examples of restricting and prohibiting communications. Managed interfaces
+      employing boundary protection devices include, for example, proxies, gateways, routers, firewalls,
+      guards, or encrypted tunnels arranged in an effective security architecture (e.g., routers protecting
+      firewalls and application gateways residing on a protected subnetwork commonly referred to as a
+      demilitarized zone or DMZ).
+    </p>
+    <p>
+      The organization considers the intrinsically shared nature of commercial telecommunications
+      services in the implementation of security controls associated with the use of such services.
+      Commercial telecommunications services are commonly based on network components and
+      consolidated management systems shared by all attached commercial customers, and may include
+      third-party provided access lines and other service elements. Consequently, such interconnecting
+      transmission services may represent sources of increased risk despite contract security provisions.
+      Therefore, when this situation occurs, the organization either implements appropriate
+      compensating security controls or explicitly accepts the additional risk. Related controls: AC-4,
+      IR-4, SC-5.
+    </p>
+  </div>
+
+  <div>
+    <h2>Control Enhancements</h2>
+    <ol class="decimal">
+      <li>The organization physically allocates publicly accessible information system components to
+          separate subnetworks with separate physical network interfaces.
+        <p>
+          <u>Enhancement Supplemental Guidance:</u>
+          Publicly accessible information system components include, for example, public web servers.
+        </p>
+      </li>
+      <li>The organization limits the number of access points to the information system to allow for more
+          comprehensive monitoring of inbound and outbound communications and network traffic.
+        <p>
+          <u>Enhancement Supplemental Guidance:</u>
+          The Trusted Internet Connection (TIC) initiative is an
+          example of limiting the number of managed network access points.
+        </p>
+      </li>
+      <li>The organization:
+        <ol class="loweralph">
+          <li>Implements a managed interface for each external telecommunication service;</li>
+          <li>Establishes a traffic flow policy for each managed interface;</li>
+          <li>Employs security controls as needed to protect the confidentiality and integrity of the
+              information being transmitted;</li>
+          <li> Documents each exception to the traffic flow policy with a supporting mission/business need
+              and duration of that need;</li>
+          <li>Reviews exceptions to the traffic flow policy [Assignment: organization-defined frequency]; and</li>
+          <li>Removes traffic flow policy exceptions that are no longer supported by an explicit
+              mission/business need.</li>
+        </ol>
+      </li>
+      <li>The information system at managed interfaces, denies network traffic by default and allows
+          network traffic by exception (i.e., deny all, permit by exception).</li>
+      <li>The organization prevents the unauthorized release of information outside of the information
+          system boundary or any unauthorized communication through the information system boundary
+          when there is an operational failure of the boundary protection mechanisms.</li>
+      <li>The information system prevents remote devices that have established a non-remote connection
+          with the system from communicating outside of that communications path with resources in
+          external networks.
+        <p>
+          <u>Enhancement Supplemental Guidance:</u>
+          This control enhancement is implemented within the
+          remote device (e.g., notebook/laptop computer) via configuration settings that are not
+          configurable by the user of that device. An example of a non-remote communications path
+          from a remote device is a virtual private network. When a non-remote connection is
+          established using a virtual private network, the configuration settings prevent split-tunneling.
+          Split tunneling might otherwise be used by remote users to communicate with the information
+          system as an extension of that system and to communicate with local resources such as a
+          printer or file server. Since the remote device, when connected by a non-remote connection,
+          becomes an extension of the information system, allowing dual communications paths such as
+          split-tunneling would be, in effect, allowing unauthorized external connections into the
+          system.
+        </p>
+      </li>
+      <li>The information system routes [Assignment: organization-defined internal communications traffic]
+          to [Assignment: organization-defined external networks] through authenticated proxy servers
+          within the managed interfaces of boundary protection devices.
+        <p>
+          <u>Enhancement Supplemental Guidance:</u>
+          External networks are networks outside the control of the
+          organization. Proxy servers support logging individual Transmission Control Protocol (TCP)
+          sessions and blocking specific Uniform Resource Locators (URLs), domain names, and
+          Internet Protocol (IP) addresses. Proxy servers are also configurable with organization-
+          defined lists of authorized and unauthorized websites.
+        </p>
+      </li>
+      <li>The information system, at managed interfaces, denies network traffic and audits internal users (or
+          malicious code) posing a threat to external information systems.
+        <p>
+          <u>Enhancement Supplemental Guidance:</u>
+          Detecting internal actions that may pose a security threat
+          to external information systems is sometimes termed extrusion detection. Extrusion detection
+          at the information system boundary includes the analysis of network traffic (incoming as well
+          as outgoing) looking for indications of an internal threat to the security of external systems.
+        </p>
+      </li>
+      <li>The organization prevents the unauthorized exfiltration of information across managed interfaces.
+        <p>
+          <u>Enhancement Supplemental Guidance:</u>
+          Measures to prevent unauthorized exfiltration of
+          information from the information system include, for example: (i) strict adherence to protocol
+          formats; (ii) monitoring for indications of beaconing from the information system; (iii)
+          monitoring for use of steganography; (iv) disconnecting external network interfaces except
+          when explicitly needed; (v) disassembling and reassembling packet headers; and (vi)
+          employing traffic profile analysis to detect deviations from the volume or types of traffic
+          expected within the organization. Examples of devices enforcing strict adherence to protocol
+          formats include, for example, deep packet inspection firewalls and XML gateways. These
+          devices verify adherence to the protocol specification at the application layer and serve to
+          identify vulnerabilities that cannot be detected by devices operating at the network or
+          transport layer.
+        </p>
+      </li>
+      <li>The information system checks incoming communications to ensure that the communications are
+          coming from an authorized source and routed to an authorized destination.</li>
+      <li>The information system implements host-based boundary protection mechanisms for servers,
+          workstations, and mobile devices.
+        <p>
+          <u>Enhancement Supplemental Guidance:</u>
+          A host-based boundary protection mechanism is, for
+          example, a host-based firewall. Host-based boundary protection mechanisms are employed
+          on mobile devices, such as notebook/laptop computers, and other types of mobile devices
+          where such boundary protection mechanisms are available.
+        </p>
+      </li>
+      <li>The organization isolates [Assignment: organization defined key information security tools,
+          mechanisms, and support components] from other internal information system components via
+          physically separate subnets with managed interfaces to other portions of the system.</li>
+      <li>The organization protects against unauthorized physical connections across the boundary
+          protections implemented at [Assignment: organization-defined list of managed interfaces].
+        <p>
+          <u>Enhancement Supplemental Guidance:</u>
+          Information systems operating at different security
+          categories may routinely share common physical and environmental controls, since the
+          systems may share space within organizational facilities. In practice, it is possible that these
+          separate information systems may share common equipment rooms, wiring closets, and cable
+          distribution paths. Protection against unauthorized physical connections can be achieved, for
+          example, by employing clearly identified and physically separated cable trays, connection
+          frames, and patch panels for each side of managed interfaces with physical access controls
+          enforcing limited authorized access to these items. Related control: PE-4.
+        </p>
+      <li>
+      <li>The information system routes all networked, privileged accesses through a dedicated, managed
+          interface for purposes of access control and auditing.
+        <p>
+          <u>Enhancement Supplemental Guidance:</u>
+          Related controls: AC-2, AC-3, AC-4, AU-2.
+        </p>
+      </li>
+      <li>The information system prevents discovery of specific system components (or devices)
+          composing a managed interface.
+        <p>
+          <u>Enhancement Supplemental Guidance:</u>
+          This control enhancement is intended to protect the
+          network addresses of information system components that are part of the managed interface
+          from discovery through common tools and techniques used to identify devices on a network.
+          The network addresses are not available for discovery (e.g., not published or entered in the
+          domain name system), requiring prior knowledge for access. Another obfuscation technique
+          is to periodically change network addresses.
+        </p>
+      </li>
+      <li>The organization employs automated mechanisms to enforce strict adherence to protocol format.
+        <p>
+          <u>Enhancement Supplemental Guidance:</u>
+          Automated mechanisms used to enforce protocol formats
+          include, for example, deep packet inspection firewalls and XML gateways. These devices
+          verify adherence to the protocol specification (e.g., IEEE) at the application layer and serve to
+          identify significant vulnerabilities that cannot be detected by devices operating at the network
+          or transport layer.
+        </p>
+      </li>
+      <li>The information system fails securely in the event of an operational failure of a boundary
+          protection device.
+        <p>
+          <u>Enhancement Supplemental Guidance:</u>
+          Fail secure is a condition achieved by the application of a
+          set of information system mechanisms to ensure that in the event of an operational failure of a
+          boundary protection device at a managed interface (e.g., router, firewall, guard, application
+          gateway residing on a protected subnetwork commonly referred to as a demilitarized zone),
+          the system does not enter into an unsecure state where intended security properties no longer
+          hold. A failure of a boundary protection device cannot lead to, or cause information external
+          to the boundary protection device to enter the device, nor can a failure permit unauthorized
+          information release.
+        </p>
+      </li>
+    </ol>
+  </div>
+
+  <div>
+    <h2>References</h2>
+    <p>
+      FIPS Publication 199; NIST Special Publications 800-41, 800-77.
+    </p>
+  </div>
+
+  <div>
+    <h2>ICS Supplemental Guidance</h2>
+    <p>None</p>
+  </div>
+
+  <div>
+    <h2>Priority and Baseline Allocation</h2>
+    <table border="1" cellpadding="5" bgcolor="#ddd">
+      <tr>
+        <td><b>P1</b></td>
+        <td><b>LOW</b> SC-7</td>
+        <td><b>MOD</b> SC-7 (1) (2) (3) (4) (5) (7)</td>
+        <td><b>HIGH</b> SC-7 (1) (2) (3) (4) (5) (6) (7) (8)</td>
+      </tr>
+    </table>
+  </div>

@@ -1,0 +1,97 @@
+<div class="control_help">
+
+  <h2>Control Help</h2>
+
+  <div class="control_help_left">
+
+    <p>
+      This application was created as a framework. Each search utilizes eventtypes and tagging in order
+      to more easily customize the integration of other data sources.  This help section outlines the
+      definition of the searches, and supplies a listing of the fields which may be used
+      for reporting.  Please take a look at the
+        <a href="${make_url(['app',APP['id'],'about'])}" target=_blank>About</a>
+      page for more information on customization.
+    </p>
+
+    <p>
+      This control utilizes data from the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','remote_access(1)'], _qs=dict(action='edit'))}" target=_blank>`remote_access`</a>
+      </b> and
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','remote_addresses)'], _qs=dict(action='edit'))}" target=_blank>`remote_addresses`</a>
+      </b>
+      search macros.  Additionally, <b>lookups/account_mapping.csv</b> is utilized as a source for account_type and organization fields, based on the user.
+    </p>
+
+    <p>
+      This control is intended to display login events which were initiated by a remote location, where "remote" is defined
+      as a non-internal and non-VPN IP address.  Only IP addresses outside of your organization's range should be displayed.
+    </p>
+    
+    <h3>Remote Access Attempts</h3>
+    <p>
+      The
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','logins(1)'], _qs=dict(action='edit'))}" target=_blank>`logins`</a>
+      </b> macro is defined as:<br/><br/>
+
+      <code>
+        `logins("src_ip=* NOT src_ip=192.168.* NOT src_ip=172.* NOT src_ip=10.* NOT src_ip=127.0.0.1 NOT src_ip=unknown")`
+      </code>
+
+      <br/><br/>
+      where the 
+        <a href="${make_url(['manager',APP['id'],'admin','macros','logins(1)'], _qs=dict(action='edit'))}" target=_blank>`logins`</a>
+      macro is defined as:<br/><br/>
+
+      <code>
+        tag=authentication user=* $filter$ `login_filter`<br/>&nbsp;&nbsp;
+        | lookup account_mapping user<br/>&nbsp;&nbsp;
+        | fillnull value=unknown user, app, src, src_ip, dest, action, account_type, organization
+      </code>
+    </p>
+
+    <p>
+      In the event that there are filter-based modifications to the search that you'd
+      like to employ permanently, you may edit the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','logins_filter'], _qs=dict(action='edit'))}" target=_blank>`logins_filter`</a>
+      </b> to
+      affect the results.  Further adjustments may require  modifying the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','logins(1)'], _qs=dict(action='edit'))}" target=_blank>`logins`</a>
+      </b> macro itself.<br/><br/>
+
+      Changes to the IP addresses which should be considered remote should be made to both the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','remote_access(1)'], _qs=dict(action='edit'))}" target=_blank>`remote_access`</a>
+      </b> and
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','remote_addresses)'], _qs=dict(action='edit'))}" target=_blank>`remote_addresses`</a>
+      </b> search macros.
+    </p>
+
+    <p>
+      Recommended Fields:
+      <ul>
+        <li>user = the user logging in</li>
+        <li>app = the login app (i.e. su, win:remote, etc)</li>
+        <li>src = source host of the login</li>
+        <li>src_ip = source IP address of the login</li>
+        <li>dest = destination host of the login</li>
+        <li>action = this should state the success status (success or failure) of the event</li>
+      </ul>
+    </p>
+
+    <h3>Lookups</h3>
+    <p>
+      Some of the information in this report is provided by a lookup in order to add account_type and organization fields.
+      The account_type should be one of: system, guest, temporary, application, group, or individual.  By default, the 
+      account_type for a user will be set to "individual", if nothing is specified.  The organization field should be
+      populated with the user's parent organization at the desired granularity.
+    </p>
+
+  </div>
+
+</div>

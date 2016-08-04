@@ -1,0 +1,65 @@
+<div class="control_help">
+
+  <h2>Control Help</h2>
+
+  <div class="control_help_left">
+
+    <p>
+      This application was created as a framework. Each search utilizes eventtypes and tagging in order
+      to more easily customize the integration of other data sources.  This help section outlines the
+      definition of the searches, and supplies a listing of the fields which may be used
+      for reporting.  Please take a look at the
+        <a href="${make_url(['app',APP['id'],'about'])}" target=_blank>About</a>
+      page for more information on customization.
+    </p>
+
+    <p>
+      This control utilizes data from the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','vulnerability_scan(1)'], _qs=dict(action='edit'))}" target=_blank>`vulnerability_scan`</a>
+      </b>
+      search macro.
+    </p>
+
+    <h3>Vulnerabilities</h3>
+    <p>
+      The
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','vulnerability_scan(1)'], _qs=dict(action='edit'))}" target=_blank>`vulnerability_scan`</a>
+      </b> macro is defined as:<br/><br/>
+
+      <code>
+        tag=vulnerability tag=report $filter$ `vulnerability_scan_filter`<br/>&nbsp;&nbsp;
+        | fillnull value=unknown dvc_type, dest, dest_ip, dest_port_proto, os, severity, signature
+      </code>
+    </p>
+
+    <p>
+      In the event that there are filter-based modifications to the search that you'd
+      like to employ permanently, you may edit the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','vulnerability_scan_filter'], _qs=dict(action='edit'))}" target=_blank>`vulnerability_scan_filter`</a>
+      </b> to
+      affect the results.  Further adjustments may require  modifying the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','vulnerability_scan(1)'], _qs=dict(action='edit'))}" target=_blank>`vulnerability_scan`</a>
+      </b> macro.<br/><br/>
+    </p>
+
+    <p>
+      Recommended Fields:
+        | fillnull value=unknown dvc_type, dest, dest_ip, dest_port_proto, os, severity, signature
+      <ul>
+        <li>dest = the scanned host</li>
+        <li>dest_ip = the scanned hosts's IP</li>
+        <li>dest_port = the host's vulnerable port number</li>
+        <li>dest_port_proto = the host's vulnerable port protocol</li>
+        <li>os = the operating system signature of the host</li>
+        <li>severity = the severity of the vulnerability</li>
+        <li>signature = a simple description of the vulnerability</li>
+      </ul>
+    </p>
+
+  </div>
+
+</div>

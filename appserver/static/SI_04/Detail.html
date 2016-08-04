@@ -1,0 +1,171 @@
+  <br/>
+  <div>
+    <h1>SI-4 INFORMATION SYSTEM MONITORING</h1><br/>
+
+    <h2>Control</h2>
+    <p>
+      The organization:
+      <ol class="loweralpha">
+        <li>Monitors events on the information system in accordance with [Assignment: organization-
+            defined monitoring objectives] and detects information system attacks;</li>
+        <li>Identifies unauthorized use of the information system;</li>
+        <li>Deploys monitoring devices: (i) strategically within the information system to collect
+            organization-determined essential information; and (ii) at ad hoc locations within the system
+            to track specific types of transactions of interest to the organization;</li>
+        <li>Heightens the level of information system monitoring activity whenever there is an indication
+            of increased risk to organizational operations and assets, individuals, other organizations, or
+            the Nation based on law enforcement information, intelligence information, or other credible
+            sources of information; and</li>
+        <li>Obtains legal opinion with regard to information system monitoring activities in accordance
+            with applicable federal laws, Executive Orders, directives, policies, or regulations.</li>
+      </ol>
+    </p>
+  </div>
+
+  <div>
+    <h2>Supplemental Guidance</h2>
+    <p>
+      Information system monitoring includes external and internal monitoring.
+      External monitoring includes the observation of events occurring at the system boundary (i.e., part
+      of perimeter defense and boundary protection). Internal monitoring includes the observation of
+      events occurring within the system (e.g., within internal organizational networks and system
+      components). Information system monitoring capability is achieved through a variety of tools and
+      techniques (e.g., intrusion detection systems, intrusion prevention systems, malicious code
+      protection software, audit record monitoring software, network monitoring software). Strategic
+      locations for monitoring devices include, for example, at selected perimeter locations and near
+      server farms supporting critical applications, with such devices typically being employed at the
+      managed interfaces associated with controls SC-7 and AC-17. The Einstein network monitoring
+      device from the Department of Homeland Security is an example of a system monitoring device.
+      The granularity of the information collected is determined by the organization based on its
+      monitoring objectives and the capability of the information system to support such activities. An
+      example of a specific type of transaction of interest to the organization with regard to monitoring
+      is Hyper Text Transfer Protocol (HTTP) traffic that bypasses organizational HTTP proxies, when
+      use of such proxies is required. Related controls: AC-4, AC-8, AC-17, AU-2, AU-6, SI-3, SI-7.
+    </p>
+  </div>
+
+  <div>
+    <h2>Control Enhancements</h2>
+    <ol class="decimal">
+      <li>The organization interconnects and configures individual intrusion detection tools into a
+          systemwide intrusion detection system using common protocols.</li>
+      <li>The organization employs automated tools to support near real-time analysis of events.</li>
+      <li>The organization employs automated tools to integrate intrusion detection tools into access
+          control and flow control mechanisms for rapid response to attacks by enabling reconfiguration of
+          these mechanisms in support of attack isolation and elimination.</li>
+      <li>The information system monitors inbound and outbound communications for unusual or
+          unauthorized activities or conditions.
+        <p>
+          <u>Enhancement Supplemental Guidance:</u>
+          Unusual/unauthorized activities or conditions include, for
+          example, internal traffic that indicates the presence of malicious code within an information
+          system or propagating among system components, the unauthorized export of information, or
+          signaling to an external information system. Evidence of malicious code is used to identify
+          potentially compromised information systems or information system components.
+        </p>
+      </li>
+      <li>The information system provides near real-time alerts when the following indications of
+          compromise or potential compromise occur: [Assignment: organization-defined list of compromise
+          indicators].
+        <p>
+          <u>Enhancement Supplemental Guidance:</u>
+          Alerts may be generated, depending on the organization-
+          defined list of indicators, from a variety of sources, for example, audit records or input from
+          malicious code protection mechanisms, intrusion detection or prevention mechanisms, or
+          boundary protection devices such as firewalls, gateways, and routers.
+        </p>
+      </li>
+      <li>The information system prevents non-privileged users from circumventing intrusion detection and
+          prevention capabilities.</li>
+      <li>The information system notifies [Assignment: organization-defined list of incident response
+          personnel (identified by name and/or by role)] of suspicious events and takes [Assignment:
+          organization-defined list of least-disruptive actions to terminate suspicious events].
+        <p>
+          <u>Enhancement Supplemental Guidance:</u>
+          The least-disruptive actions may include initiating a
+          request for human response.
+        </p>
+      </li>
+      <li>The organization protects information obtained from intrusion-monitoring tools from unauthorized
+          access, modification, and deletion.</li>
+      <li>The organization tests/exercises intrusion-monitoring tools [Assignment: organization-defined
+          time-period].
+        <p>
+          <u>Enhancement Supplemental Guidance:</u>
+          The frequency of testing/exercises is dependent upon the
+          type and method of deployment of the intrusion-monitoring tools.
+        </p>
+      </li>
+      <li>The organization makes provisions so that encrypted traffic is visible to information system
+          monitoring tools.
+        <p>
+          <u>Enhancement Supplemental Guidance:</u>
+          The enhancement recognizes the need to balance
+          encrypting traffic versus the need to have insight into that traffic from a monitoring
+          perspective. For some organizations, the need to ensure the confidentiality of traffic is
+          paramount; for others, the mission-assurance concerns are greater.
+        </p>
+      </li>
+      <li>The organization analyzes outbound communications traffic at the external boundary of the system
+          (i.e., system perimeter) and, as deemed necessary, at selected interior points within the system
+          (e.g., subnets, subsystems) to discover anomalies.
+        <p>
+          <u>Enhancement Supplemental Guidance:</u>
+          Anomalies within the information system include, for
+          example, large file transfers, long-time persistent connections, unusual protocols and ports in
+          use, and attempted communications with suspected malicious external addresses.
+        </p>
+      </li>
+      <li>The organization employs automated mechanisms to alert security personnel of the following
+          inappropriate or unusual activities with security implications: [Assignment: organization-defined
+          list of inappropriate or unusual activities that trigger alerts].</li>
+      <li>The organization:
+        <ol class="loweralpha">
+          <li>Analyzes communications traffic/event patterns for the information system;</li>
+          <li>Develops profiles representing common traffic patterns and/or events; and</li>
+          <li>Uses the traffic/event profiles in tuning system-monitoring devices to reduce the number of
+              false positives to [Assignment: organization-defined measure of false positives] and the
+              number of false negatives to [Assignment: organization-defined measure of false negatives].</li>
+        </ol>
+      </li>
+      <li>The organization employs a wireless intrusion detection system to identify rogue wireless devices
+          and to detect attack attempts and potential compromises/breaches to the information system.</li>
+      <li>The organization employs an intrusion detection system to monitor wireless communications
+          traffic as the traffic passes from wireless to wireline networks.</li>
+      <li>The organization correlates information from monitoring tools employed throughout the
+          information system to achieve organization-wide situational awareness.</li>
+      <li>The organization correlates results from monitoring physical, cyber, and supply chain activities to
+          achieve integrated situational awareness.
+        <p>
+          <u>Enhancement Supplemental Guidance:</u>
+          Integrated situational awareness enhances the capability
+          of the organization to more quickly detect sophisticated attacks and investigate the methods
+          and techniques employed to carry out the attacks.
+        </p>
+      </li>
+    </ol>
+  </div>
+
+  <div>
+    <h2>References</h2>
+    <p>
+      NIST Special Publications 800-61, 800-83, 800-92, 800-94.
+    </p>
+  </div>
+
+  <div>
+    <h2>ICS Supplemental Guidance</h2>
+    <p>None</p>
+  </div>
+
+  <div>
+    <h2>Priority and Baseline Allocation</h2>
+    <table border="1" cellpadding="5" bgcolor="#ddd">
+      <tr>
+        <td><b>P1</b></td>
+        <td><b>LOW</b> Not Selected</td>
+        <td><b>MOD</b> SI-4 (2) (4) (5) (6)</td>
+        <td><b>HIGH</b> SI-4 (2) (4) (5) (6)</td>
+      </tr>
+    </table>
+  </div>

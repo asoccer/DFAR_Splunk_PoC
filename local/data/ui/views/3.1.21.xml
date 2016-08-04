@@ -1,0 +1,173 @@
+<form>
+  <label>3.1.21 Limit use of organizational portable storage devices on external information systems</label>
+  <body>Welcome to Splunk, this form will show DFAR</body>
+  <label>HTML</label>
+  <fieldset submitButton="false" autoRun="true">
+    <input type="time" token="field1" searchWhenChanged="true">
+      <label>Time Range</label>
+      <default>
+        <earliest>-7d@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <single>
+        <search>
+          <query>index=* sourcetype="WMI:USBChanges" DeviceID=*  NOT ATO="*"| stats count</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="drilldown">all</option>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="numberPrecision">0</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+        <option name="linkView">search</option>
+        <option name="rangeColors">["0x65a637","0xd93f3c"]</option>
+        <option name="rangeValues">[0]</option>
+        <option name="refresh.link.visible">true</option>
+        <option name="underLabel">Total violations in this timespan</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search>
+          <query>index=device_id | lookup host_lookup SystemName | lookup usb_lookup DeviceID | search NOT ATO=* DeviceID=* | top City limit=1</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">all</option>
+        <option name="count">10</option>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="numberPrecision">0</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+        <option name="rangeColors">["0xd93f3c","0xd93f3c"]</option>
+        <option name="rangeValues">[0]</option>
+        <option name="linkView">search</option>
+        <option name="underLabel">Office with the highest violations</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search>
+          <query>index=* *.txt OR *.pdf host=vm Object_Name="*"  TaskCategory="Removable Storage" | timechart count span=60m | rename src_user AS "User"</query>
+          <earliest>-30d@d</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x65a637","0xd93f3c"]</option>
+        <option name="rangeValues">[0]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">inverse</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">Violations the last 30 days</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Unauthorized USB Connections</title>
+        <search>
+          <query>index=device_id SystemName=WS1| lookup host_lookup SystemName | lookup usb_lookup DeviceID | search NOT ATO=* DeviceID=* | table _time machine_name ATO src_ip  City State Country DeviceID | rename machine_name AS "Machine/Workstation" | rename src_ip AS "Source IP" | fillnull value="UNAUTHORIZED DEVICE"</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Files accessed on the removable storage</title>
+        <search>
+          <query>index=* *.txt OR *.pdf host=vm Object_Name="*"  TaskCategory="Removable Storage" | table  _time src_user src_ip Object_Name City State Country | rename src_user AS User | rename src_ip AS "Local IP" | rename Object_Name AS "File Accessed" |</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Devices Connected by location (3.1.18 &amp; 3.1.21)</title>
+        <search>
+          <query>index=*  sourcetype="WMI:USBChanges" DeviceID=*  | lookup host_lookup SystemName | dedup _time | search machine_name!="Domain Controller" |table  _time machine_name ATO src_ip NAME City State Country DeviceID  | rename  machine_name AS "Machine/Workstation"  | rename  src_ip AS "Source IP"  | fillnull  ATO value=NO  | fillnull  NAME value=UNKNOWN</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">true</option>
+        <option name="drilldown">cell</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+            <h1>
+                Resources for NIST
+            </h1>
+            <h3>
+          <a href="http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171.pdf">NIST Special Publication 800-171</a>
+        </h3>
+        <h3>
+          <a href="https://web.nvd.nist.gov/view/800-53/Rev4/control?controlName=AC-20">NIST 800-53 AC-20 - Use of External Information Systems</a>
+        </h3>
+        <p>3.1.18 Control connection of mobile devices. Mobile devices in this demo will be considered as portable removable storage devices.</p>
+        <p>3.1.21 Limit use of organizational portable storage devices on external information systems. </p>       
+        </html>
+    </panel>
+    <panel>
+      <html>
+        <h1> 
+          Config Help
+        </h1>
+        <p>To have this setup make sure you have the WMI stanza set in the Universal Forwarder. Example below</p>
+        <p>[WMI:USBChanges]</p>
+        <p>interval = 1</p>
+        <p>wql = select * from __InstanceOperationEvent within 1 where TargetInstance ISA 'Win32_PnPEntity' and TargetInstance.Description='USB Mass Storage Device'</p>
+        <p>disabled = 0</p>
+        <p>current_only = 1</p>
+      </html>
+    </panel>
+  </row>
+</form>

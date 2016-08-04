@@ -1,0 +1,155 @@
+<div class="control_help">
+
+  <h2>Control Help</h2>
+
+  <div class="control_help_left">
+
+    <p>
+      This application was created as a framework. Each search utilizes eventtypes and tagging in order
+      to more easily customize the integration of other data sources.  This help section outlines the
+      definition of the searches, and supplies a listing of the fields which may be used
+      for reporting.  Please take a look at the
+        <a href="${make_url(['app',APP['id'],'about'])}" target=_blank>About</a>
+      page for more information on customization.
+    </p>
+
+    <p>
+      This control utilizes data from the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','network_attack(1)'], _qs=dict(action='edit'))}" target=_blank>`network_attack`</a>
+      </b>,
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','proxy_traffic(1)'], _qs=dict(action='edit'))}" target=_blank>`proxy_traffic`</a>
+      </b>, and
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','firewall_traffic(1)'], _qs=dict(action='edit'))}" target=_blank>`firewall_traffic`</a>
+      </b>
+      search macros.
+    </p>
+    
+    <h3>Network Attacks</h3>
+    <p>
+      The
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','network_attack(1)'], _qs=dict(action='edit'))}" target=_blank>`network_attack`</a>
+      </b>
+      macro is defined as:<br/><br/>
+
+      <code>
+        tag=network OR tag=wireless tag=ids tag=attack $filter$ `network_attack_filter`<br/>&nbsp;&nbsp;
+        | eval dest=coalesce(dest, DST)<br/>&nbsp;&nbsp;
+        | eval src=coalesce(SRC, src)<br/>
+        | fillnull value=unknown src, dest, vendor, severity, category, signature
+      </code>
+    </p>
+
+    <p>
+      In the event that there are filter-based modifications to the search that you'd
+      like to employ permanently, you may edit the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','network_attack_filter'], _qs=dict(action='edit'))}" target=_blank>`network_attack_filter`</a>
+      </b> to
+      affect the results.  Further adjustments may require  modifying the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','network_attack(1)'], _qs=dict(action='edit'))}" target=_blank>`network_attack`</a>
+      </b> macro itself.
+    </p>
+
+    <p>
+      Recommended Fields:
+      <ul>
+        <li>src = the source host of the attack</li>
+        <li>dest = the host on which the attack was directed</li>
+        <li>vendor = IDS vendor, if present</li>
+        <li>severity = severity provided by the attack data</li>
+        <li>category = the attack category (e.g. denial of service)</li>
+        <li>signature = the attack signature</li>
+      </ul>
+    </p>
+  </div>
+
+  <div class="control_help_right">
+
+    <h3>Proxies</h3>
+    <p>
+      The
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','proxy_traffic(1)'], _qs=dict(action='edit'))}" target=_blank>`proxy_traffic`</a>
+      </b> macro is defined as:<br/><br/>
+
+      <code>
+        tag=web tag=proxy $filter$ `proxy_traffic_filter`<br/>&nbsp;&nbsp;
+        | eval dvc=coalesce(dvc, host)<br/>&nbsp;&nbsp;
+        | fillnull value=unknown user, src, dest, action, http_method
+      </code>
+    </p>
+
+    <p>
+      In the event that there are filter-based modifications to the search that you'd
+      like to employ permanently, you may edit the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','proxy_traffic_filter'], _qs=dict(action='edit'))}" target=_blank>`proxy_traffic_filter`</a>
+      </b> to
+      affect the results.  Further adjustments may require  modifying the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','proxy_traffic(1)'], _qs=dict(action='edit'))}" target=_blank>`proxy_traffic`</a>
+      </b> macro itself.
+    </p>
+
+    <p>
+      Recommended Fields:
+      <ul>
+        <li>dvc = the proxy name or IP</li>
+        <li>user = the user making the request</li>
+        <li>src = the host where the request originated</li>
+        <li>dest = the destination of the request</li>
+        <li>action = the proxy action (e.g. cache hit, miss, etc)</li>
+        <li>http_method = the type of request (e.g. post or get)</li>
+        <li>bytes_in = incoming byte count</li>
+        <li>bytes_out = outgoing byte count</li>
+      </ul>
+    </p>
+
+    <h3>Firewalls</h3>
+    <p>
+      The
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','firewall_traffic(1)'], _qs=dict(action='edit'))}" target=_blank>`firewall_traffic`</a>
+      </b> macro is defined as:<br/><br/>
+
+      <code>
+        tag=network tag=firewall tag=communicate $filter$ `firewall_traffic_filter`<br/>&nbsp;&nbsp;
+        | eval dvc=coalesce(dvc, host)<br/>&nbsp;&nbsp;
+        | fillnull value=unknown user, src, dest, action, service
+      </code>
+    </p>
+
+    <p>
+      In the event that there are filter-based modifications to the search that you'd
+      like to employ permanently, you may edit the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','firewall_traffic_filter'], _qs=dict(action='edit'))}" target=_blank>`firewall_traffic_filter`</a>
+      </b> to
+      affect the results.  Further adjustments may require  modifying the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','firewall_traffic(1)'], _qs=dict(action='edit'))}" target=_blank>`firewall_traffic`</a>
+      </b> macro itself.
+    </p>
+
+    <p>
+      Recommended Fields:
+      <ul>
+        <li>dvc = the firewall name or IP</li>
+        <li>user = the user making the request</li>
+        <li>src = the host where the request originated</li>
+        <li>dest = the destination of the request</li>
+        <li>action = the firewall action (e.g. allow or deny)</li>
+        <li>service = the service being requested</li>
+        <li>bytes_in = incoming byte count</li>
+        <li>bytes_out = outgoing byte count</li>
+      </ul>
+    </p>
+
+  </div>
+
+</div>

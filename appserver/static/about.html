@@ -1,0 +1,179 @@
+<div style="overflow:hidden; margin: 5px; min-width: 850px; min-height: 500px">
+  <div style="float: left;">
+    <h1>Splunk for FISMA</h1> 
+    <p>
+      Version: 1.1.2<br/>
+      Published: April 6, 2012<br/>
+      Reference: NIST 800-53 revision 3<br/>
+    </p>
+  </div>
+
+  <br style="clear:both;" />
+  <br style="clear:both;" />
+
+  <div style="float: left;">
+    <h1>General</h1>
+
+    <p>
+      The FISMA app provides reports and searches that are relevant to NIST 800-53 revision 3 guidelines, in order to automate
+      compliance reporting.  The app leverages CIM
+      (<a href="http://docs.splunk.com/Documentation/Splunk/latest/Knowledge/UnderstandandusetheCommonInformationModel">Common Information Model</a>)
+      extractions and tagging, which are generally provided in the form of "Technology Add-ons" by Splunk, or can be built as needed.
+      Each control references a help page which describes the tags and fields used in order to populate search results and drive visualizations.
+    </p>
+
+    <p>
+      This app utilizes search macros in order to provide flexibility and customizability to the end-user.  Macros contain 2
+      separate filtering mechanisms.  The first utilizes arguments, i.e. <b>`vulnerability_scan("severity=high")`</b>, while the
+      second utilizes a similarly named filter macro and is intended for more permanent filtering, i.e. <b>`vulnerability_scan_filter`</b>
+      whose definition should be customized as needed for the purposes of permanent search modifications.  Additionally, summary
+      indexing generation is executed via macros with a "sg_" prefix to the macro name, while summary index searching is executed
+      via macros with an "ss_" prefix.  For example, <b>`sg_vulnerability_scan`</b> is used by a savedsearch in order to populate
+      the summary index, while views will use <b>`ss_vulnerability_scan`</b> for the search of the previously generated summary index data.
+    </p>
+
+    <p>
+      This app contains scheduled searches which populate the summary indexes: fisma_access_summary, fisma_account_summary,
+      fisma_audit_summary, fisma_endpoint_summary, and fisma_network_summary.
+      Most views automatically switch between live and summary indexed data, based on the selected time period.  If real-time mode, or any
+      timeframe under 6 hours is selected, charts will be populated via live data.  However, if a 6 hour or greater time period is selected,
+      the search will instead utilize summary indexes.  So, &gt;= 6h results in a call to the `ss_vulnerability_scan` macro, while any time
+      period less than 6 hours will use the `vulnerability_scan` search instead.  In that case, the summary index data has been populated
+      via a scheduled search which calls the macro `sg_vulnerability_scan`.  All of these elements can be modified as needed, but many
+      modifications should be made to the included search macro filters instead, or to the underlying Technology Add-ons which perform
+      field extractions, and create eventtypes and tags.
+    </p>
+  </div>
+
+  <div style="float: left;">
+    <h1>Installation</h1>
+
+    <p>
+      The FISMA app is required to be present on the search head.  However, this app contains scheduled searches which populate the
+      summary indexes: fisma_access_summary, fisma_account_summary, fisma_audit_summary, fisma_endpoint_summary, and fisma_network_summary.
+      By default, summary indexed data will reside on the search head, but the search head may be configured to
+      forward the summary data down the indexers in a distributed environment.  Here's a splunkbase article regarding the subject:
+      <a href="http://splunk-base.splunk.com/answers/7810/app-installation-scheduled-searches-summary-index-and-search-heads">
+        http://splunk-base.splunk.com/answers/7810/app-installation-scheduled-searches-summary-index-and-search-heads
+      </a>
+    </p>
+
+    <p>
+      Please consult the README file for any technology add-ons in order to determine their installation requirements
+      such as the <a href="http://splunk-base.splunk.com/apps/28933/splunk-for-windows-technology-add-on">Splunk for Windows Technology Add-on</a>
+      and the <a href="http://splunk-base.splunk.com/apps/33800/splunk-for-unix-and-linux-technology-add-on">Splunk for Unix and Linux Technology Add-on</a>
+    </p>
+
+    <p>
+      It is not required to backfill summary indexes, but a script (bin/backfill_summary_indexes.sh) is provided if needed.
+    </p>
+  </div>
+
+  <br style="clear:both;" />
+  <br style="clear:both;" />
+
+  <div style="float: left;">
+    <h1>Customization</h1>
+
+    <p>
+      As an example of adding a new data source which provides vulnerability data that you'd like to include in the canned 
+      reports, we can start by looking at the required tags for the control in question.  In the case of vulnerability scans
+      we start with creating a new TA for our data (e.g. TA-scanner).  The TA should extract fields properly, and create an eventtype which
+      provides access to the correct data.
+    </p>
+
+    <p>
+      The following eventtype definition is simple and the expectation is that any search results of "sourcetype=nessus" will
+      contain a valid vulnerability/issue on a single endpoint.<br/><br/>
+
+      <pre>
+        # eventtypes.conf
+        [nessus]
+        search = sourcetype=nessus
+      </pre>
+    </p>
+
+    <p>
+      Tags are associated to the eventtype created above and will be the primary search used within relevant
+      dashboards.  Executing the search: "tag=network tag=vulnerability tag=report", should yield a minimum of the same
+      results as "sourcetype=nessus".  However, these tags may be applied to multiple data sources and therefore eventtypes.
+      This is the strength of using this method -- new data sources can be added as needed without needing to modify
+      the included dashboards and canned searches.<br/><br/>
+
+      <pre>
+        # tags.conf
+        [eventtype=nessus]
+        network = enabled
+        vulnerability = enabled
+        report = enabled
+      </pre>
+    </p>
+
+    <p>
+      Additionally, you should ensure that the necessary fields are present, if possible,
+      though the lack of fields has generally been accounted for with a "fillnull" statement.  These field extractions are
+      performed within the "Technology Add-on" and follow the "Common Information Model" noted above.  In this case:<br/>
+
+      <ul>
+        <li><b>dest</b> = the scanned host</li>
+        <li><b>dest_ip</b> = the host's IP address</li>
+        <li><b>dest_port</b> = the host's vulnerable network port</li>
+        <li><b>dest_port_proto</b> = the host's vulnerable network port protocol</li>
+        <li><b>os</b> = operating system name, if present</li>
+        <li><b>severity</b> = severity of the vulnerability, extracted from the event data</li>
+        <li><b>signature</b> = text describing the vulnerability</li>
+      </ul>
+    </p>
+
+    <p>
+      <b>For further reference, the specific eventtypes, tags, and fields required for each dashboard are
+        included in each control's "Help" page.</b>
+    </p>
+  </div>
+
+  <br style="clear:both;" />
+  <br style="clear:both;" />
+
+  <div style="float: left;">
+    <h1>Lookups</h1>
+
+    <p>
+      The FISMA app utilizes 2 lookups: account_mapping.csv and privileged_commands.csv.  Please ensure that
+      these lookups are properly configured.
+    </p>
+
+    <p>
+      Following is an example account_mapping.csv.  This lookup is intended to add account type and organizational
+      information to a <b>user</b> attribute.  This lookup uses wildcard values and undefined accounts will default
+      to "individual". If desired, the lookup may be converted to a "dynamic" or "scripted" lookup in order to integrate
+      with identity management systems.  Controls which utilize this lookup state as much within their "Help" page.<br/>
+
+      <pre>
+      user,account_type,organization
+      *$,system,
+      administrator,system,
+      root,system,
+      guest,guest,
+      temp,temporary,
+      apache,application,
+      webdev,group,
+      philjackson,individual,Agency X
+      bruce.lee,individual,Agency Y
+      *,individual,
+      </pre>
+    </p>
+
+    <p>
+      Lastly, this is a short exerpt from the privileged_commands.csv lookup, which specifies whether an
+      <b>app</b> attribute is a privileged command. Controls which utilize this lookup state as much within their "Help" page.<br/>
+
+      <pre>
+      app,is_privileged
+      arp.exe,true 
+      at.exe,true
+      attrib.exe,true
+      ...
+      </pre>
+  </div>
+
+</div>

@@ -1,0 +1,78 @@
+<nav search_view="search" color="#16769C">
+  
+  
+
+<view name="search"/>
+  
+  <view name="Homepage" default='true' />
+  
+  <collection label="Controls">
+    
+    <collection label="3.1 Access Control">
+       
+       <view name="3.1.7" />
+       <view name="3.1.8" />
+       <view name="3.1.18" />
+       <view name="3.1.21" />
+     
+       </collection>
+      
+      <divider />
+      
+      
+      <collection label="3.2 Awareness and Training (DEV) ">
+         <view name="3.2.1" />
+        <view name="3.2.2" />
+         <view name="3.2.3" />
+        
+        </collection>
+        
+        <divider />
+        
+        <collection label="3.3 Audit and Accountability ">
+         
+          <view name="3.3.2" />
+          
+          
+           </collection>
+          
+          <divider />
+          
+          <collection label="3.4 Configuration Management">
+       
+          <view name="3.4.3" />
+         
+            
+            </collection>
+            
+            <divider />
+            
+            
+     <collection label="3.5 Identification and Authentication (DEV) ">
+        <view name="3.5.1" />
+      
+
+           
+</collection>
+    <divider />
+        
+     
+    </collection>
+      <collection label="Other">
+        <view name="dashboards" />
+        <view name="reports" />
+        <view name="predictive_analytics" />
+         <view name="alerts" />
+        <view name="data_models" />
+        <view name="search" />
+    </collection>
+  
+    </nav>
+  
+  
+
+
+  
+
+
+  

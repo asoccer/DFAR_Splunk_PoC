@@ -1,0 +1,70 @@
+<div class="control_help">
+
+  <h2>Control Help</h2>
+
+  <div class="control_help_left">
+
+    <p>
+      This application was created as a framework. Each search utilizes eventtypes and tagging in order
+      to more easily customize the integration of other data sources.  This help section outlines the
+      definition of the searches, and supplies a listing of the fields which may be used
+      for reporting.  Please take a look at the
+        <a href="${make_url(['app',APP['id'],'about'])}" target=_blank>About</a>
+      page for more information on customization.
+    </p>
+
+    <p>
+      This control utilizes data from the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','backup_event(1)'], _qs=dict(action='edit'))}" target=_blank>`backup_event`</a>
+      </b>
+      search macro.  Additionally, <b>lookups/account_mapping.csv</b> is utilized as a source for account_type and organization fields, based on the user.
+    </p>
+    
+    <h3>Backup Events</h3>
+    <p>
+      The
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','backup_event(1)'], _qs=dict(action='edit'))}" target=_blank>`backup_event`</a>
+      </b> macro is defined as:<br/><br/>
+
+      <code>
+        tag=backup $filter$ `backup_event_filter`<br/>&nbsp;&nbsp;
+        | fillnull value=unknown dest, action, user, signature, vendor, account_type, organization
+      </code>
+    </p>
+
+    <p>
+      In the event that there are filter-based modifications to the search that you'd
+      like to employ permanently, you may edit the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','backup_event_filter'], _qs=dict(action='edit'))}" target=_blank>`backup_event_filter`</a>
+      </b> to
+      affect the results.  Further adjustments may require  modifying the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','backup_event(1)'], _qs=dict(action='edit'))}" target=_blank>`backup_event`</a>
+      </b> macro itself.
+    </p>
+
+    <p>
+      Recommended Fields:
+      <ul>
+        <li>user = the user running the backup</li>
+        <li>dest = destination host of the backup</li>
+        <li>action = the status of the backup event (success or failure)</li>
+        <li>signature = a simple description</li>
+        <li>vendor = the vendor of the backup product</li>
+      </ul>
+    </p>
+
+    <h3>Lookups</h3>
+    <p>
+      Some of the information in this report is provided by a lookup in order to add account_type and organization fields.
+      The account_type should be one of: system, guest, temporary, application, group, or individual.  By default, the 
+      account_type for a user will be set to "individual", if nothing is specified.  The organization field should be
+      populated with the user's parent organization at the desired granularity.
+    </p>
+
+  </div>
+
+</div>

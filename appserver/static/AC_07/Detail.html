@@ -1,0 +1,74 @@
+  <br/>
+  <div>
+    <h1>AC-7 UNSUCCESSFUL LOGIN ATTEMPTS</h1><br/>
+
+    <h2>Control</h2>
+    <p>
+      The information system:<br/>
+      <ol class="loweralpha">
+        <li>Enforces a limit of [Assignment: organization-defined number] consecutive invalid access
+            attempts by a user during a [Assignment: organization-defined time period]; and</li>
+        <li>Automatically [Selection: locks the account/node for an [Assignment: organization-defined
+            time period]; locks the account/node until released by an administrator; delays next login
+            prompt according to [Assignment: organization-defined delay algorithm]] when the maximum number
+            of unsuccessful attempts is exceeded. The control applies regardless of whether the login occurs
+            via a local or network connection.</li>
+      </ol>
+    </p>
+  </div>
+
+  <div>
+    <h2>Supplemental Guidance</h2>
+    <p>
+      Due to the potential for denial of service, automatic lockouts initiated by
+      the information system are usually temporary and automatically release after a predetermined time
+      period established by the organization. If a delay algorithm is selected, the organization may
+      chose to employ different algorithms for different information system components based on the
+      capabilities of those components. Response to unsuccessful login attempts may be implemented
+      at both the operating system and the application levels. This control applies to all accesses other
+      than those accesses explicitly identified and documented by the organization in AC-14.
+    </p>
+  </div>
+
+  <div>
+    <h2>Control Enhancements</h2>
+    <ol class="decimal">
+      <li>The information system automatically locks the account/node until released by an administrator
+          when the maximum number of unsuccessful attempts is exceeded.</li>
+      <li>The information system provides additional protection for mobile devices accessed via login by
+          purging information from the device after [Assignment: organization-defined number] consecutive,
+          unsuccessful login attempts to the device.
+        <p>
+          <u>Enhancement Supplemental Guidance:</u> This enhancement applies only to mobile devices for
+          which a login occurs (e.g., personal digital assistants) and not to mobile devices accessed
+          without a login such as removable media. In certain situations, this enhancement may not
+          apply to mobile devices if the information on the device is encrypted with sufficiently strong
+          encryption mechanisms, making purging unnecessary. The login is to the mobile device, not
+          to any one account on the device. Therefore, a successful login to any account on the mobile
+          device resets the unsuccessful login count to zero.
+        </p>
+      </li>
+    </ol>
+  </div>
+
+  <div>
+    <h2>References</h2>
+    <p>None</p>
+  </div>
+
+  <div>
+    <h2>ICS Supplemental Guidance</h2>
+    <p>None</p>
+  </div>
+
+  <div>
+    <h2>Priority and Baseline Allocation</h2>
+    <table border="1" cellpadding="5" bgcolor="#ddd">
+      <tr>
+        <td><b>P2</b></td>
+        <td><b>LOW</b> AC-7</td>
+        <td><b>MOD</b> AC-7</td>
+        <td><b>HIGH</b> AC-7</td>
+      </tr>
+    </table>
+  </div>

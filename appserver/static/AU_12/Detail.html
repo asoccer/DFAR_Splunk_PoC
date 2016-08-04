@@ -1,0 +1,77 @@
+  <br/>
+  <div>
+    <h1>AU-12 AUDIT GENERATION</h1><br/>
+
+    <h2>Control</h2>
+    <p>The information system:
+      <ol class="loweralpha">
+        <li>Provides audit record generation capability for the list of auditable events defined in AU-2 at
+            [Assignment: organization-defined information system components];</li>
+        <li>Allows designated organizational personnel to select which auditable events are to be audited
+            by specific components of the system; and</li>
+        <li>Generates audit records for the list of audited events defined in AU-2 with the content as
+            defined in AU-3.</li>
+      </ol>
+    </p>
+  </div>
+
+  <div>
+    <h2>Supplemental Guidance</h2>
+    <p>
+      Audits records can be generated from various components within the
+      information system. The list of audited events is the set of events for which audits are to be
+      generated. This set of events is typically a subset of the list of all events for which the system is
+      capable of generating audit records (i.e., auditable events). Related controls: AU-2, AU-3.
+    </p>
+  </div>
+
+  <div>
+    <h2>Control Enhancements</h2>
+    <ol class="decimal">
+      <li>The information system compiles audit records from [Assignment: organization-defined
+          information system components] into a system-wide (logical or physical) audit trail that is time-
+          correlated to within [Assignment: organization-defined level of tolerance for relationship between
+          time stamps of individual records in the audit trail].
+        <p>
+          <u>Enhancement Supplemental Guidance</u> The audit trail is time-correlated if the time stamp in the
+          individual audit records can be reliably related to the time stamp in other audit records to
+          achieve a time ordering of the records within the organization-defined tolerance.
+        </p>
+      </li>
+      <li>The information system produces a system-wide (logical or physical) audit trail composed of audit
+          records in a standardized format.
+        <p>
+          <u>Enhancement Supplemental Guidance</u> Audit information normalized to a common standard
+          promotes interoperability and exchange of such information between dissimilar devices and
+          information systems. This facilitates an audit system that produces event information that can
+          be more readily analyzed and correlated. System log records and audit records compliant
+          with the Common Event Expression (CEE) are examples of standard formats for audit
+          records. If individual logging mechanisms within the information system do not conform to a
+          standardized format, the system may convert individual audit records into a standardized
+          format when compiling the system-wide audit trail.
+        </p>
+      </li>
+    </ol>
+  </div>
+
+  <div>
+    <h2>References</h2>
+    <p>None</p>
+  </div>
+
+  <div>
+    <h2>ICS Supplemental Guidance</h2>
+    <p>None</p>
+  </div>
+
+  <div>
+    <h2>Priority and Baseline Allocation</h2>
+    <table border="1" cellpadding="5" bgcolor="#ddd">
+      <tr>
+        <td><b>P1</b></td>
+        <td><b>LOW</b> AU-12</td>
+        <td><b>MOD</b> AU-12</td>
+        <td><b>HIGH</b> AU-12 (1)</td>
+      </tr>
+    </table>
+  </div>

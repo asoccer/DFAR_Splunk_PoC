@@ -1,0 +1,126 @@
+<form>
+  <label>3.1.8 Limit Unsuccessful Logon Attempts</label>
+  <fieldset submitButton="false">
+    <input type="time" token="field1" searchWhenChanged="true">
+      <label></label>
+      <default>
+        <earliest>-60m@m</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <title>All Users</title>
+      <table>
+        <search>
+          <query>| inputlookup usersfinale.csv | rename Group as "Security Group" | table Users, "Security Group"</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+    <panel>
+      <title>Top Failed User Logins</title>
+      <chart>
+        <search>
+          <query>host=win7work01 OR host=win7work02 sourcetype="WinEventLog:Security" ("EventCode=4625") OR ("EventCode=529" OR "EventCode=530" OR "EventCode=531" OR "EventCode=532" OR "EventCode=533" OR "EventCode=534" OR "EventCode=535" OR "EventCode=536" OR "EventCode=537" OR "EventCode=539") | stats count by user</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">0</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">pie</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.showDataLabels">none</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Failed Logins By User</title>
+      <table>
+        <search>
+          <query>[| inputlookup users.csv] sourcetype="WinEventLog:Security" ("EventCode=4625") OR ("EventCode=529" OR "EventCode=530" OR "EventCode=531" OR "EventCode=532" OR "EventCode=533" OR "EventCode=534" OR "EventCode=535" OR "EventCode=536" OR "EventCode=537" OR "EventCode=539") Failure_Reason!="Account locked out."  | stats values(Failure_Reason) count  by user src  | rename count as "Login Failure Count" user as "User Name" src as "Workstation" values(Failure_Reason) as "Failure Reason"</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+    <panel>
+      <title>Locked Out Accounts</title>
+      <table>
+        <search>
+          <query>sourcetype="WinEventLog:Security" ("EventCode=4625") OR ("EventCode=4740") Failure_Reason="Account locked out." | stats count by user Failure_Reason | rename user as Users Failure_Reason as "Account Status" count as "Locked Account Login Attemps"</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+            <h1>
+                3.1.8: Limit unsuccessful logon attempts
+            </h1>
+        <h3>
+          <a href="https://web.nvd.nist.gov/view/800-53/Rev4/control?controlName=AC-7">NIST 800-53 AC-7 - UNSUCCESSFUL LOGON ATTEMPTS</a>
+        </h3>
+        <h3> Control Description</h3> <body>
+        The organization:<br/>
+a.	Identifies and selects the following types of information system accounts to support organizational missions/business functions: [Assignment: organization-defined information system account types];
+<br/>b.	Assigns account managers for information system accounts;
+<br/>c.	Establishes conditions for group and role membership;
+<br/>d.	Specifies authorized users of the information system, group and role membership, and access authorizations (i.e., privileges) and other attributes (as required) for each account;
+<br/>e.	Requires approvals by [Assignment: organization-defined personnel or roles] for requests to create information system accounts;
+<br/>f.	Creates, enables, modifies, disables, and removes information system accounts in accordance with [Assignment: organization-defined procedures or conditions];
+<br/>g.	Monitors the use of information system accounts;
+<br/>h.	Notifies account managers:
+        1.	When accounts are no longer required;
+        2.	When users are terminated or transferred; and
+        3.	When individual information system usage or need-to-know changes;<br/>
+i. Authorizes access to the information system based on:
+        1.	A valid access authorization;
+        2.	Intended system usage; and
+        3.	Other attributes as required by the organization or associated missions/business functions;<br/>
+j.	Reviews accounts for compliance with account management requirements [Assignment: organization-defined frequency]; and
+<br/>k.	Establishes a process for reissuing shared/group account credentials (if deployed) when individuals are removed from the group.
+        </body>
+      </html>
+    </panel>
+  </row>
+</form>

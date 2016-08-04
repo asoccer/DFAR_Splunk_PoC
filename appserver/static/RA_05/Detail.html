@@ -1,0 +1,111 @@
+  <br/>
+  <div>
+    <h1>RA-5 VULNERABILITY SCANNING</h1><br/>
+
+    <h2>Control</h2>
+    <p>
+      The organization:<br/>
+      <ol class="loweralpha">
+        <li>Scans for vulnerabilities in the information system and hosted applications [Assignment:
+            organization-defined frequency and/or randomly in accordance with organization-defined
+            process] and when new vulnerabilities potentially affecting the system/applications are
+            identified and reported;</li>
+        <li>Employs vulnerability scanning tools and techniques that promote interoperability among
+            tools and automate parts of the vulnerability management process by using standards for:
+          <ul>
+            <li>Enumerating platforms, software flaws, and improper configurations;</li>
+            <li>Formatting and making transparent, checklists and test procedures; and</li>
+            <li>Measuring vulnerability impact;</li>
+          </ul>
+        </li>
+        <li>Analyzes vulnerability scan reports and results from security control assessments;</li>
+        <li>Remediates legitimate vulnerabilities [Assignment: organization-defined response times] in
+            accordance with an organizational assessment of risk; and</li>
+        <li>Shares information obtained from the vulnerability scanning process and security control
+            assessments with designated personnel throughout the organization to help eliminate similar
+            vulnerabilities in other information systems (i.e., systemic weaknesses or deficiencies).</li>
+      </ol>
+    </p>
+  </div>
+
+  <div>
+    <h2>Supplemental Guidance</h2>
+    <p>
+      The security categorization of the information system guides the frequency
+      and comprehensiveness of the vulnerability scans. Vulnerability analysis for custom software and
+      applications may require additional, more specialized techniques and approaches (e.g., web-based
+      application scanners, source code reviews, source code analyzers). Vulnerability scanning
+      includes scanning for specific functions, ports, protocols, and services that should not be
+      accessible to users or devices and for improperly configured or incorrectly operating information
+      flow mechanisms. The organization considers using tools that express vulnerabilities in the
+      Common Vulnerabilities and Exposures (CVE) naming convention and that use the Open
+      Vulnerability Assessment Language (OVAL) to test for the presence of vulnerabilities. The
+      Common Weakness Enumeration (CWE) and the National Vulnerability Database (NVD) are also
+      excellent sources for vulnerability information. In addition, security control assessments such as
+      red team exercises are another source of potential vulnerabilities for which to scan. Related
+      controls: CA-2, CM-6, RA-3, SI-2.
+    </p>
+  </div>
+
+  <div>
+    <h2>Control Enhancements</h2>
+    <ol class="decimal">
+      <li>The organization employs vulnerability scanning tools that include the capability to readily update
+          the list of information system vulnerabilities scanned.</li>
+      <li>The organization updates the list of information system vulnerabilities scanned [Assignment:
+          organization-defined frequency] or when new vulnerabilities are identified and reported.</li>
+      <li>The organization employs vulnerability scanning procedures that can demonstrate the breadth and
+          depth of coverage (i.e., information system components scanned and vulnerabilities checked).</li>
+      <li>The organization attempts to discern what information about the information system is
+          discoverable by adversaries.</li>
+      <li>The organization includes privileged access authorization to [Assignment: organization-identified
+          information system components] for selected vulnerability scanning activities to facilitate more
+          thorough scanning.</li>
+      <li>The organization employs automated mechanisms to compare the results of vulnerability scans
+          over time to determine trends in information system vulnerabilities.</li>
+      <li>The organization employs automated mechanisms [Assignment: organization-defined frequency]
+          to detect the presence of unauthorized software on organizational information systems and notify
+          designated organizational officials.</li>
+      <li>The organization reviews historic audit logs to determine if a vulnerability identified in the
+          information system has been previously exploited.</li>
+      <li>The organization employs an independent penetration agent or penetration team to:
+        <ol class="loweralpha">
+          <li>Conduct a vulnerability analysis on the information system; and</li>
+          <li>Perform penetration testing on the information system based on the vulnerability analysis to
+              determine the exploitability of identified vulnerabilities.</li>
+        </ol>
+        <p>
+          <u>Enhancement Supplemental Guidance:</u>
+          A standard method for penetration testing includes: (i)
+          pre-test analysis based on full knowledge of the target information system; (ii) pre-test
+          identification of potential vulnerabilities based on pre-test analysis; and (iii) testing designed
+          to determine exploitability of identified vulnerabilities. Detailed rules of engagement are
+          agreed upon by all parties before the commencement of any penetration testing scenario.
+        </p>
+      </li>
+    </ol>
+  </div>
+
+  <div>
+    <h2>References</h2>
+    <p>
+      NIST Special Publications 800-40, 800-70, 800-115; Web: CWE.MITRE.ORG; NVD.NIST.GOV.
+    </p>
+  </div>
+
+  <div>
+    <h2>ICS Supplemental Guidance</h2>
+    <p>None</p>
+  </div>
+
+  <div>
+    <h2>Priority and Baseline Allocation</h2>
+    <table border="1" cellpadding="5" bgcolor="#ddd">
+      <tr>
+        <td><b>P1</b></td>
+        <td><b>LOW</b> RA-5</td>
+        <td><b>MOD</b> RA-5 (1)</td>
+        <td><b>HIGH</b> RA-5 (1) (2) (3) (4) (5) (7)</td>
+      </tr>
+    </table>
+  </div>

@@ -1,0 +1,26 @@
+
+<dashboard>
+    <label>Homepage</label>
+    <row>
+        <panel>
+            <title>Sources</title>
+            <table>
+                <search>
+                    <query>* | stats count by sourcetype</query>
+                    <earliest></earliest>
+                    <latest></latest>
+                </search>
+            </table>
+        </panel>
+        <panel>
+            <title>Host</title>
+            <table>
+                <search>
+                    <query>* | stats count by host</query>
+                    <earliest></earliest>
+                    <latest></latest>
+                </search>
+            </table>
+        </panel>
+    </row>
+</dashboard>

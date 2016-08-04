@@ -1,0 +1,11 @@
+user,account_type,organization
+*$,system,
+administrator,system,
+root,system,
+guest,guest,
+temp,temporary,
+apache,application,
+webdev,group,
+philjackson,individual,Agency X
+Geroge.Washington,individual,Agency Y
+*,individual,

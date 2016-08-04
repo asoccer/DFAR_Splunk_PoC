@@ -1,0 +1,126 @@
+<form>
+  <label>3.1.18 Control Connection of Mobile Devices</label>
+  <fieldset submitButton="false" autoRun="true">
+    <input type="time" token="time_tok" searchWhenChanged="true">
+      <label>Select Time Range</label>
+      <default>
+        <earliest>-30d@d</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <single>
+        <search>
+          <query>index=device_id sourcetype="WMI:USBChanges" | dedup _time | timechart count span=2h | rename count AS Connected</query>
+          <earliest>$time_tok.earliest$</earliest>
+          <latest>$time_tok.latest$</latest>
+        </search>
+        <option name="colorBy">trend</option>
+        <option name="colorMode">block</option>
+        <option name="drilldown">all</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x65a637","0xd93f3c"]</option>
+        <option name="rangeValues">[0]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">inverse</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">Timeline Overview</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+        <option name="linkView">search</option>
+        <option name="unit">Device(s)</option>
+      </single>
+    </panel>
+    <panel>
+      <table>
+        <title>List of Authorized Removable Storage Devices</title>
+        <search>
+          <query>|inputlookup usb_lookup | rename SIZE(32GB) AS SIZE</query>
+          <earliest>$time_tok.earliest$</earliest>
+          <latest>$time_tok.latest$</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+    <panel>
+      <single>
+        <search>
+          <query>index=device_id sourcetype="WMI:USBChanges" | dedup _time | stats count | rename count AS Connected</query>
+          <earliest>$time_tok.earliest$</earliest>
+          <latest>$time_tok.latest$</latest>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="drilldown">all</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x65a637","0x6db7c6","0xd93f3c"]</option>
+        <option name="rangeValues">[0,15]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">Total # of times a device was plugged in</option>
+        <option name="unit">Device(s)</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+        <option name="linkView">search</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Devices Connected</title>
+        <search>
+          <query>index=*  sourcetype="WMI:USBChanges" DeviceID=* |lookup host_lookup SystemName | dedup _time | table _time machine_name ATO src_ip NAME City State Country DeviceID | rename machine_name AS "Machine/Workstation" | rename src_ip AS "Source IP" | fillnull ATO value=NO | fillnull NAME value=UNKNOWN</query>
+          <earliest>$time_tok.earliest$</earliest>
+          <latest>$time_tok.latest$</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="drilldown">cell</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+            <h1>
+                Resources for NIST
+            </h1>
+            <h3>
+          <a href="http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171.pdf">NIST Special Publication 800-171</a>
+        </h3>
+        <h3>
+          <a href="https://web.nvd.nist.gov/view/800-53/Rev4/control?controlName=AC-19">NIST 800-53 AC-19 - Access Control for Mobile Devices</a>
+        </h3>
+        <p>3.1.18 Control connection of mobile devices. Mobile devices in this demo will be considered as portable removable storage devices.</p>
+        </html>
+    </panel>
+    <panel>
+      <html>
+        <h1> 
+          Config Help
+        </h1>
+        <p>Depending on your security policy you can upload a lookup table into the DFAR instance and match it with the incoming WMI logs to see which ID's match and which don't.</p>
+        <p>To have this setup make sure you have the WMI stanza set in the Universal Forwarder. Example below</p>
+        <p>[WMI:USBChanges]</p>
+        <p>interval = 1</p>
+        <p>wql = select * from __InstanceOperationEvent within 1 where TargetInstance ISA 'Win32_PnPEntity' and TargetInstance.Description='USB Mass Storage Device'</p>
+        <p>disabled = 0</p>
+        <p>current_only = 1</p>
+      </html>
+    </panel>
+  </row>
+</form>

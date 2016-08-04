@@ -1,0 +1,34 @@
+SystemName,src_ip,machine_name,City,State,Country
+WIN-4OS3BVRFHK2.SPLUNK.DFAR,192.168.139.136,Domain Controller,McLean,VA,USA
+WS1.SPLUNK.DFAR,192.168.139.134,Workstation,Fairfax,VA,USA
+WS2.SPLUNK.DFAR,192.168.139.137,Workstation,London,N/A,England
+WS3.SPLUNK.DFAR,192.168.139.138,Workstation,Fairfax,VA,USA
+WS4.SPLUNK.DFAR,192.168.139.139,Workstation,Fairfax,VA,USA
+WS5.SPLUNK.DFAR,192.168.139.140,Workstation,Fairfax,VA,USA
+WS6.SPLUNK.DFAR,192.168.176.201,Workstation,Fairfax,VA,USA
+WS7.SPLUNK.DFAR,192.168.176.202,Workstation,London,N/A,England
+WS8.SPLUNK.DFAR,192.168.176.203,Workstation,London,N/A,England
+WS9.SPLUNK.DFAR,192.168.121.110,Workstation,Paris,N/A,France
+WS10.SPLUNK.DFAR,192.168.121.111,Workstation,Paris,N/A,France
+WS11.SPLUNK.DFAR,192.168.121.112,Workstation,Paris,N/A,France
+WS12.SPLUNK.DFAR,192.168.121.113,Workstation,Paris,N/A,France
+WS13.SPLUNK.DFAR,192.168.121.114,Workstation,Tokyo ,N/A,Japan
+WS14.SPLUNK.DFAR,192.168.121.115,Workstation,Tokyo ,N/A,Japan
+WS15.SPLUNK.DFAR,192.168.139.150,Workstation,Tokyo ,N/A,Japan
+File Server,192.168.139.151,File_Server,Ashburn,VA,USA
+WS1,192.168.139.134,Workstation,Fairfax,VA,USA
+WS2,192.168.139.137,Workstation,London,N/A,England
+WS3,192.168.139.138,Workstation,Fairfax,VA,USA
+WS4,192.168.139.139,Workstation,Fairfax,VA,USA
+WS5,192.168.139.140,Workstation,Fairfax,VA,USA
+WS6,192.168.176.201,Workstation,Fairfax,VA,USA
+WS7,192.168.176.202,Workstation,London,N/A,England
+WS8,192.168.176.203,Workstation,London,N/A,England
+WS9,192.168.121.110,Workstation,Paris,N/A,France
+WS10,192.168.121.111,Workstation,Paris,N/A,France
+WS11,192.168.121.112,Workstation,Paris,N/A,France
+WS12,192.168.121.113,Workstation,Paris,N/A,France
+WS13,192.168.121.114,Workstation,Tokyo ,N/A,Japan
+WS14,192.168.121.115,Workstation,Tokyo ,N/A,Japan
+WS15,192.168.139.150,Workstation,Tokyo ,N/A,Japan
+WIN-4OS3BVRFHK2,192.168.139.136,Domain Controller,McLean,VA,USA

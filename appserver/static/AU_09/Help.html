@@ -1,0 +1,87 @@
+<div class="control_help">
+
+  <h2>Control Help</h2>
+
+  <div class="control_help_left">
+
+    <p>
+      This application was created as a framework. Each search utilizes eventtypes and tagging in order
+      to more easily customize the integration of other data sources.  This help section outlines the
+      definition of the searches, and supplies a listing of the fields which may be used
+      for reporting.  Please take a look at the
+        <a href="${make_url(['app',APP['id'],'about'])}" target=_blank>About</a>
+      page for more information on customization.
+    </p>
+
+    <p>
+      This control utilizes data from the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','audit_cleared(1)'], _qs=dict(action='edit'))}" target=_blank>`audit_cleared`</a>
+      </b> and
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','audit_stopped(1)'], _qs=dict(action='edit'))}" target=_blank>`audit_stopped`</a>
+      </b>
+      search macros.
+    </p>
+
+    <h3>Audit System Stoppage and Clearing Events</h3>
+    <p>
+      The
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','audit_cleared(1)'], _qs=dict(action='edit'))}" target=_blank>`audit_cleared`</a>
+      </b> macro is defined as:<br/><br/>
+
+      <code>
+        tag=audit tag=cleared $filter$ `audit_cleared_filter`
+      </code>
+    </p>
+
+    <p>
+      The
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','audit_stopped(1)'], _qs=dict(action='edit'))}" target=_blank>`audit_stopped`</a>
+      </b> macro is defined as:<br/><br/>
+
+      <code>
+        tag=audit tag=stopped $filter$ `audit_stopped_filter`
+      </code>
+    </p>
+
+    <p>
+      The 2 macros defined above are executed as a single search:
+
+      <code>
+        (`audit_cleared`) OR (`audit_stopped`)
+      </code>
+    </p>
+
+    <p>
+      In the event that there are filter-based modifications to the search that you'd
+      like to employ permanently, you may edit the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','audit_cleared_filter'], _qs=dict(action='edit'))}" target=_blank>`audit_cleared_filter`</a>
+      </b> or the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','audit_stopped_filter'], _qs=dict(action='edit'))}" target=_blank>`audit_stopped_filter`</a>
+      </b> to
+      affect the results.  Further adjustments may require  modifying the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','audit_cleared(1)'], _qs=dict(action='edit'))}" target=_blank>`audit_cleared`</a>
+      </b> or
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','audit_stopped(1)'], _qs=dict(action='edit'))}" target=_blank>`audit_stopped`</a>
+      </b> macros.<br/><br/>
+    </p>
+
+    <p>
+      Recommended Fields:
+      <ul>
+        <li>dest = host where the network event occurred</li>
+        <li>action = this should state the success status (success or failure) of the event</li>
+        <li>signature = a simple description of the event</li>
+      </ul>
+    </p>
+
+  </div>
+
+</div>

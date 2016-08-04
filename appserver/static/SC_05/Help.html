@@ -1,0 +1,65 @@
+<div class="control_help">
+
+  <h2>Control Help</h2>
+
+  <div class="control_help_left">
+
+    <p>
+      This application was created as a framework. Each search utilizes eventtypes and tagging in order
+      to more easily customize the integration of other data sources.  This help section outlines the
+      definition of the searches, and supplies a listing of the fields which may be used
+      for reporting.  Please take a look at the
+        <a href="${make_url(['app',APP['id'],'about'])}" target=_blank>About</a>
+      page for more information on customization.
+    </p>
+
+    <p>
+      This control utilizes data from the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','network_attack(1)'], _qs=dict(action='edit'))}" target=_blank>`network_attack`</a>
+      </b>
+      search macro.
+    </p>
+    
+    <h3>Network Attacks</h3>
+    <p>
+      The
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','network_attack(1)'], _qs=dict(action='edit'))}" target=_blank>`network_attack`</a>
+      </b>
+      macro is defined as:<br/><br/>
+
+      <code>
+        tag=network OR tag=wireless tag=ids tag=attack $filter$ `network_attack_filter`<br/>&nbsp;&nbsp;
+        | eval dest=coalesce(dest, DST)<br/>&nbsp;&nbsp;
+        | eval src=coalesce(SRC, src)<br/>
+        | fillnull value=unknown src, dest, vendor, severity, category, signature
+      </code>
+    </p>
+
+    <p>
+      In the event that there are filter-based modifications to the search that you'd
+      like to employ permanently, you may edit the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','network_attack_filter'], _qs=dict(action='edit'))}" target=_blank>`network_attack_filter`</a>
+      </b> to
+      affect the results.  Further adjustments may require  modifying the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','network_attack(1)'], _qs=dict(action='edit'))}" target=_blank>`network_attack`</a>
+      </b> macro itself.
+    </p>
+
+    <p>
+      Recommended Fields:
+      <ul>
+        <li>src = the source host of the attack</li>
+        <li>dest = the host on which the attack was directed</li>
+        <li>vendor = IDS vendor, if present</li>
+        <li>severity = severity provided by the attack data</li>
+        <li>category = the attack category (e.g. denial of service)</li>
+        <li>signature = the attack signature</li>
+      </ul>
+    </p>
+  </div>
+
+</div>

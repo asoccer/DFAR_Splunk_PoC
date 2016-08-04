@@ -1,0 +1,111 @@
+  <br/>
+  <div>
+    <h1>IA-2 IDENTIFICATION AND AUTHENTICATION (ORGANIZATIONAL USERS)</h1><br/>
+
+    <h2>Control</h2>
+    <p>
+      The information system uniquely identifies and authenticates organizational users (or
+      processes acting on behalf of organizational users).
+    </p>
+  </div>
+
+  <div>
+    <h2>Supplemental Guidance</h2>
+    <p>
+      Organizational users include organizational employees or individuals the
+      organization deems to have equivalent status of employees (e.g., contractors, guest researchers,
+      individuals from allied nations). Users are uniquely identified and authenticated for all accesses
+      other than those accesses explicitly identified and documented by the organization in AC-14.
+      Unique identification of individuals in group accounts (e.g., shared privilege accounts) may need
+      to be considered for detailed accountability of activity. Authentication of user identities is
+      accomplished through the use of passwords, tokens, biometrics, or in the case of multifactor
+      authentication, some combination thereof. Access to organizational information systems is
+      defined as either local or network. Local access is any access to an organizational information
+      system by a user (or process acting on behalf of a user) where such access is obtained by direct
+      connection without the use of a network. Network access is any access to an organizational
+      information system by a user (or process acting on behalf of a user) where such access is obtained
+      through a network connection. Remote access is a type of network access which involves
+      communication through an external network (e.g., the Internet). Internal networks include local
+      area networks, wide area networks, and virtual private networks that are under the control of the
+      organization. For a virtual private network (VPN), the VPN is considered an internal network if
+      the organization establishes the VPN connection between organization-controlled endpoints in a
+      manner that does not require the organization to depend on any external networks across which the
+      VPN transits to protect the confidentiality and integrity of information transmitted. Identification
+      and authentication requirements for information system access by other than organizational users
+      are described in IA-8.
+    </p>
+    <p>
+      The identification and authentication requirements in this control are satisfied by complying with
+      Homeland Security Presidential Directive 12 consistent with organization-specific implementation
+      plans provided to OMB. In addition to identifying and authenticating users at the information-
+      system level (i.e., at logon), identification and authentication mechanisms are employed at the
+      application level, when necessary, to provide increased information security for the organization.
+      Related controls: AC-14, AC-17, AC-18, IA-4, IA-5.
+    </p>
+  </div>
+
+  <div>
+    <h2>Control Enhancements</h2>
+    <ol class="digit">
+      <li>The information system uses multifactor authentication for network access to privileged accounts.</li>
+      <li>The information system uses multifactor authentication for network access to non-privileged accounts.</li>
+      <li>The information system uses multifactor authentication for local access to privileged accounts.</li>
+      <li>The information system uses multifactor authentication for local access to non-privileged accounts.</li>
+      <li>The organization:
+        <ol class="loweralpha">
+          <li>Allows the use of group authenticators only when used in conjunction with an
+              individual/unique authenticator; and</li>
+          <li>Requires individuals to be authenticated with an individual authenticator prior to using a
+              group authenticator.</li>
+        </ol>
+      </li>
+      <li>The information system uses multifactor authentication for network access to privileged accounts
+          where one of the factors is provided by a device separate from the information system being
+          accessed.</li>
+      <li>The information system uses multifactor authentication for network access to non-privileged
+          accounts where one of the factors is provided by a device separate from the information system
+          being accessed.</li>
+      <li>The information system uses [Assignment: organization-defined replay-resistant authentication
+          mechanisms] for network access to privileged accounts.
+        <p>
+          <u>Enhancement Supplemental Guidance:</u> An authentication process resists replay attacks if it is
+          impractical to achieve a successful authentication by recording and replaying a previous
+          authentication message. Techniques used to address this include protocols that use nonces or
+          challenges (e.g., TLS), and time synchronous or challenge-response one-time authenticators.
+        </p>
+      </li>
+      <li>The information system uses [Assignment: organization-defined replay-resistant authentication
+          mechanisms] for network access to non-privileged accounts.
+        <p>
+          <u>Enhancement Supplemental Guidance:</u> An authentication process resists replay attacks if it is
+          impractical to achieve a successful authentication by recording and replaying a previous
+          authentication message. Techniques used to address this include protocols that use nonces or
+          challenges (e.g., TLS), and time synchronous or challenge-response one-time authenticators.
+        </p>
+      </li>
+    </ol>
+  </div>
+
+  <div>
+    <h2>References</h2>
+    <p>
+      HSPD 12; OMB Memorandum 04-04; FIPS Publication 201; NIST Special Publications 800-63, 800-73, 800-76, 800-78.
+    </p>
+  </div>
+
+  <div>
+    <h2>ICS Supplemental Guidance</h2>
+    <p>None</p>
+  </div>
+
+  <div>
+    <h2>Priority and Baseline Allocation</h2>
+    <table border="1" cellpadding="5" bgcolor="#ddd">
+      <tr>
+        <td><b>P1</b></td>
+        <td><b>LOW</b> IA-2 (1)</td>
+        <td><b>MOD</b> IA-2 (1) (2) (3) (8)</td>
+        <td><b>HIGH</b> IA-2 (1) (2) (3) (4) (8) (9)</td>
+      </tr>
+    </table>
+  </div>

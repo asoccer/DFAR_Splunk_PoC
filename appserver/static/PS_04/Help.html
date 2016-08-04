@@ -1,0 +1,58 @@
+<div class="control_help">
+
+  <h2>Control Help</h2>
+
+  <div class="control_help_left">
+
+    <p>
+      This application was created as a framework. Each search utilizes eventtypes and tagging in order
+      to more easily customize the integration of other data sources.  This help section outlines the
+      definition of the searches, and supplies a listing of the fields which may be used
+      for reporting.  Please take a look at the
+        <a href="${make_url(['app',APP['id'],'about'])}" target=_blank>About</a>
+      page for more information on customization.
+    </p>
+
+    <p>
+      This control utilizes data from the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','terminated_user_activity'], _qs=dict(action='edit'))}" target=_blank>`terminated_user_activity`</a>
+      </b>
+      search macro.  Additionally, <b>lookups/account_mapping.csv</b> is utilized as a source for account_type and organization fields, based on the user.
+    </p>
+    
+    <h3>Terminated Users</h3>
+    <p>
+      The
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','terminated_user_activity'], _qs=dict(action='edit'))}" target=_blank>`terminated_user_activity`</a>
+      </b>
+
+      macro is defined as:<br/><br/>
+
+      <code>
+        tag::user=terminated
+      </code>
+    </p>
+
+    <p>
+      Recommended Fields:
+      <ul>
+        <li>user = the user logging in</li>
+        <li>src = source host of the login</li>
+        <li>dest = destination host of the login</li>
+        <li>action = this should state the success status (success or failure) of the event</li>
+      </ul>
+    </p>
+
+    <h3>Lookups</h3>
+    <p>
+      Some of the information in this report is provided by a lookup in order to add account_type and organization fields.
+      The account_type should be one of: system, guest, temporary, application, group, or individual.  By default, the 
+      account_type for a user will be set to "individual", if nothing is specified.  The organization field should be
+      populated with the user's parent organization at the desired granularity.
+    </p>
+
+  </div>
+
+</div>

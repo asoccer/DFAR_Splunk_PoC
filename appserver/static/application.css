@@ -1,0 +1,83 @@
+
+.FieldSetItem {
+  float: left;
+}
+
+.TimeRangePicker {
+  float: left;
+}
+
+.SubmitButton {
+  float: left;
+}
+
+.AppBar .auxLinks {
+  display: none;
+}
+
+.TitleBar .splHeader {
+  background-color: #fff;
+}
+
+.TitleBar .splHeader h2 {
+  display: none;
+}
+
+.TitleBar .actionsMenu {
+  margin-left: 5px;
+}
+
+.TitleBar .splPipe {
+  display: none;
+}
+
+.mainSearchControls, .mainSearchControlsTable {
+  background-color: #fff;
+}
+
+.TabSwitcher {
+  background-color: #eee;
+}
+
+.SplunkModule.TabSwitcher {
+  margin-bottom: 20px;
+}
+
+.dashboardCell .SplunkModule {
+  padding: 0 0 4px 4px;
+}
+
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+
+ol.decimal {
+  list-style-type: decimal;
+}
+
+.ViewRedirectorLink a {
+  float: none;
+}
+
+.helpLink {
+  float: right;
+  margin-right: 10px;
+}
+
+.control_help {
+  margin: 25px;
+  text-align: left;
+  width: 1100px;
+}
+
+.control_help_left {
+  float: left;
+  padding: 0px 50px 0px 0px;
+  width: 500px;
+}
+
+.control_help_right {
+  float: right;
+  padding: 0px 50px 0px 0px;
+  width: 500px;
+}

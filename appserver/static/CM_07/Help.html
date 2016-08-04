@@ -1,0 +1,71 @@
+<div class="control_help">
+
+  <h2>Control Help</h2>
+
+  <div class="control_help_left">
+
+    <p>
+      This application was created as a framework. Each search utilizes eventtypes and tagging in order
+      to more easily customize the integration of other data sources.  This help section outlines the
+      definition of the searches, and supplies a listing of the fields which may be used
+      for reporting.  Please take a look at the
+        <a href="${make_url(['app',APP['id'],'about'])}" target=_blank>About</a>
+      page for more information on customization.
+    </p>
+
+    <p>
+      Data for this control may originate from a scanning tool (e.g. nessus) or from a scripted input
+      on the destination host (e.g. Splunk_TA_windows/bin/win_listening_ports.bat).
+    </p>
+
+    <p>
+      This control utilizes data from the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','listening_ports(1)'], _qs=dict(action='edit'))}" target=_blank>`listening_ports`</a>
+      </b>
+      search macro.
+    </p>
+    
+    <h3>Listening Ports</h3>
+    <p>
+      The
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','listening_ports(1)'], _qs=dict(action='edit'))}" target=_blank>`listening_ports`</a>
+      </b> macro is defined as:<br/><br/>
+
+      <code>
+        tag=port tag=listening tag=report $filter$ `listening_ports_filter`<br/>&nbsp;&nbsp;
+        | fillnull value=unknown dvc_type, os, dest_port, dest_port_proto, dest_port_state, transport, app, app_version
+      </code>
+    </p>
+
+    <p>
+      In the event that there are filter-based modifications to the search that you'd
+      like to employ permanently, you may edit the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','listening_ports_filter'], _qs=dict(action='edit'))}" target=_blank>`listening_ports_filter`</a>
+      </b> to
+      affect the results.  Further adjustments may require  modifying the
+      <b>
+        <a href="${make_url(['manager',APP['id'],'admin','macros','listening_ports(1)'], _qs=dict(action='edit'))}" target=_blank>`listening_ports`</a>
+      </b> macro itself.
+    </p>
+
+    <p>
+      Recommended Fields:
+      <ul>
+        <li>dest = host on which the port was detected</li>
+        <li>dvc_type = the device category (switch, server, etc)</li>
+        <li>dest_port = port number detected</li>
+        <li>dest_port_proto = port protocol detected</li>
+        <li>dest_port_state = the port state (open, closed, etc)</li>
+        <li>os = the operating system of the scanned host</li>
+        <li>transport = the port transport (tcp, udp)</li>
+        <li>app = the application bound to the scanned port</li>
+        <li>app_version = the application version bound to the scanned port</li>
+      </ul>
+    </p>
+
+  </div>
+
+</div>

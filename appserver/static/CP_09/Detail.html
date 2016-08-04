@@ -1,0 +1,75 @@
+  <br/>
+  <div>
+    <h1>CP-9 INFORMATION SYSTEM BACKUP</h1><br/>
+
+    <h2>Control</h2>
+    <p>
+      The organization:
+      <ol class="loweralpha">
+        <li>Conducts backups of user-level information contained in the information system [Assignment:
+            organization-defined frequency consistent with recovery time and recovery point objectives];</li>
+        <li>Conducts backups of system-level information contained in the information system
+            [Assignment: organization-defined frequency consistent with recovery time and recovery
+            point objectives];</li>
+        <li>Conducts backups of information system documentation including security-related
+            documentation [Assignment: organization-defined frequency consistent with recovery time
+            and recovery point objectives]; and</li>
+        <li>Protects the confidentiality and integrity of backup information at the storage location.</li>
+      </ol>
+    </p>
+  </div>
+
+  <div>
+    <h2>Supplemental Guidance</h2>
+    <p>
+      System-level information includes, for example, system-state information,
+      operating system and application software, and licenses. Digital signatures and cryptographic
+      hashes are examples of mechanisms that can be employed by organizations to protect the integrity
+      of information system backups. An organizational assessment of risk guides the use of encryption
+      for protecting backup information. The protection of system backup information while in transit is
+      beyond the scope of this control. Related controls: CP-6, MP-4.
+    </p>
+  </div>
+
+  <div>
+    <h2>Control Enhancements</h2>
+    <ol class="decimal">
+      <li>The organization tests backup information [Assignment: organization-defined frequency] to verify
+          media reliability and information integrity.</li>
+      <li>The organization uses a sample of backup information in the restoration of selected information
+          system functions as part of contingency plan testing.</li>
+      <li>The organization stores backup copies of the operating system and other critical information
+          system software, as well as copies of the information system inventory (including hardware,
+          software, and firmware components) in a separate facility or in a fire-rated container that is not
+          colocated with the operational system.</li>
+      <li>[Withdrawn: Incorporated into CP-9].
+      <li>The organization transfers information system backup information to the alternate storage site
+          [Assignment: organization-defined time period and transfer rate consistent with the recovery time
+          and recovery point objectives].</li>
+      <li>The organization accomplishes information system backup by maintaining a redundant secondary
+          system, not collocated, that can be activated without loss of information or disruption to the
+          operation.</li>
+    </ol>
+  </div>
+
+  <div>
+    <h2>References</h2>
+    <p>NIST Special Publication 800-34.</p>
+  </div>
+
+  <div>
+    <h2>ICS Supplemental Guidance</h2>
+    <p>None</p>
+  </div>
+
+  <div>
+    <h2>Priority and Baseline Allocation</h2>
+    <table border="1" cellpadding="5" bgcolor="#ddd">
+      <tr>
+        <td><b>P1</b></td>
+        <td><b>LOW</b> CP-9</td>
+        <td><b>MOD</b> CP-9 (1)</td>
+        <td><b>HIGH</b> CP-9 (1) (2) (3)</td>
+      </tr>
+    </table>
+  </div>

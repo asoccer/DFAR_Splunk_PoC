@@ -1,0 +1,137 @@
+  <br/>
+  <div>
+    <h1>AC-3 ACCESS ENFORCEMENT</h1><br/>
+
+    <h2>Control</h2>
+    <p>
+      The information system enforces approved authorizations for logical access to the system<br/>
+    </p>
+  </div>
+
+  <div>
+    <h2>Supplemental Guidance</h2>
+    <p>
+      Supplemental Guidance: Access control policies (e.g., identity-based policies, role-based policies,
+      attribute-based policies) and access enforcement mechanisms (e.g., access control lists, access
+      control matrices, cryptography) are employed by organizations to control access between users (or
+      processes acting on behalf of users) and objects (e.g., devices, files, records, processes, programs,
+      domains) in the information system. In addition to enforcing authorized access at the information-system
+      level, access enforcement mechanisms are employed at the application level, when
+      necessary, to provide increased information security for the organization. Consideration is given
+      to the implementation of an audited, explicit override of automated mechanisms in the event of
+      emergencies or other serious events. If encryption of stored information is employed as an access
+      enforcement mechanism, the cryptography used is FIPS 140-2 (as amended) compliant. For
+      classified information, the cryptography used is largely dependent on the classification level of the
+      information and the clearances of the individuals having access to the information. Mechanisms
+      implemented by AC-3 are configured to enforce authorizations determined by other security
+      controls. Related controls: AC-2, AC-4, AC-5, AC-6, AC-16, AC-17, AC-18, AC-19, AC-20,
+      AC-21, AC-22, AU-9, CM-5, CM-6, MA-3, MA-4, MA-5, SA-7, SC-13, SI-9.<br/>
+    </p>
+  </div>
+
+  <div>
+    <h2>Control Enhancements</h2>
+    <ol class="decimal">
+      <li>[Withdrawn: Incorporated into AC-6].</li>
+      <li>The information system enforces dual authorization, based on organizational policies and
+          procedures for [Assignment: organization-defined privileged commands].
+        <p>
+          <u>Enhancement Supplemental Guidance:</u>
+          Dual authorization mechanisms require two forms of approval to execute.
+          The organization does not employ dual authorization mechanisms when
+          an immediate response is necessary to ensure public and environmental safety.
+        </p>
+      </li>
+
+      <li>The information system enforces [Assignment: organization-defined nondiscretionary access
+          control policies] over [Assignment: organization-defined set of users and resources] where
+          the policy rule set for each policy specifies:
+        <ol class="loweralpha">
+          <li>Access control information (i.e., attributes) employed by the policy rule set (e.g., position,
+              nationality, age, project, time of day); and</li>
+          <li>Required relationships among the access control information to permit access.</li>
+        </ol>
+
+        <p>
+          <u>Enhancement Supplemental Guidance:</u>
+          Nondiscretionary access control policies that may be
+          implemented by organizations include, for example, Attribute-Based Access Control,
+          Mandatory Access Control, and Originator Controlled Access Control. Nondiscretionary
+          access control policies may be employed by organizations in addition to the employment of
+          discretionary access control policies.
+        </p>
+        <p>
+          For Mandatory Access Control (MAC): Policy establishes coverage over all subjects and
+          objects under its control to ensure that each user receives only that information to which the
+          user is authorized access based on classification of the information, and on user clearance and
+          formal access authorization. The information system assigns appropriate security attributes
+          (e.g., labels/security domains/types) to subjects and objects, and uses these attributes as the
+          basis for MAC decisions. The Bell-LaPadula security model defines allowed access with
+          regard to an organization-defined set of strictly hierarchical security levels as follows: A
+          subject can read an object only if the security level of the subject dominates the security level
+          of the object and a subject can write to an object only if two conditions are met: the security
+          level of the object dominates the security level of the subject, and the security level of the
+          user's clearance dominates the security level of the object (no read up, no write down).
+        </p>
+        <p>
+          For Role-Based Access Control (RBAC): Policy establishes coverage over all users and
+          resources to ensure that access rights are grouped by role name, and access to resources is
+          restricted to users who have been authorized to assume the associated role.
+        </p>
+      </li>
+      <li>The information system enforces a Discretionary Access Control (DAC) policy that:
+        <ol class="loweralpha">
+          <li>Allows users to specify and control sharing by named individuals or groups of individuals, or by both;</li>
+          <li>Limits propagation of access rights; and</li>
+          <li>Includes or excludes access to the granularity of a single user.</li>
+        </ol>
+      </li>
+      <li>The information system prevents access to [Assignment: organization-defined security-relevant
+          information] except during secure, nonoperable system states.
+        <p>
+          <u>Enhancement Supplemental Guidance:</u>
+          Security-relevant information is any information within the information system that can
+          potentially impact the operation of security functions in a manner that could result in
+          failure to enforce the system security policy or maintain isolation of code and data.
+          Filtering rules for routers and firewalls, cryptographic key management
+          information, key configuration parameters for security services, and access control lists are
+          examples of security-relevant information. Secure, nonoperable system states are states in
+          which the information system is not performing mission/business-related processing (e.g., the
+          system is off-line for maintenance, troubleshooting, boot-up, shutdown).
+        </p>
+      </li>
+      <li>The organization encrypts or stores off-line in a secure location [Assignment: organization-defined
+          user and/or system information].
+        <p>
+          <u>Enhancement Supplemental Guidance:</u>
+          The use of encryption by the organization reduces the
+          probability of unauthorized disclosure of information and can also detect unauthorized
+          changes to information. Removing information from online storage to offline storage
+          eliminates the possibility of individuals gaining unauthorized access via a network. Related
+          control: MP-4.
+        </p>
+      </li>
+    </ol>
+  </div>
+
+  <div>
+    <h2>References</h2>
+    <p>None</p>
+  </div>
+
+  <div>
+    <h2>ICS Supplemental Guidance</h2>
+    <p>None</p>
+  </div>
+
+  <div>
+    <h2>Priority and Baseline Allocation</h2>
+    <table border="1" cellpadding="5" bgcolor="#ddd">
+      <tr>
+        <td><b>P1</b></td>
+        <td><b>LOW</b> AC-3</td>
+        <td><b>MOD</b> AC-3</td>
+        <td><b>HIGH</b> AC-3</td>
+      </tr>
+    </table>
+  </div>

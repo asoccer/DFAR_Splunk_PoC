@@ -1,0 +1,165 @@
+[app/ui]
+version = 6.4.1
+modtime = 1467837811.598381000
+
+[app/launcher]
+version = 6.4.1
+modtime = 1467837811.605080000
+
+[nav/default]
+version = 6.4.2
+modtime = 1470157371.063853400
+
+[app/package/check_for_updates]
+version = 6.4.1
+modtime = 1467837811.607357000
+
+[views/Homepage]
+version = 6.4.2
+modtime = 1470157144.365824400
+
+[views/3.1.8]
+version = 6.4.2
+modtime = 1469814862.081490500
+
+[views/3.1.1]
+version = 6.4.2
+modtime = 1469455266.239132900
+
+[views/3.4.3]
+version = 6.4.2
+modtime = 1470159461.013879100
+
+[views/3.1.21]
+version = 6.4.2
+modtime = 1470313208.500638900
+
+[views/3.1.7]
+version = 6.4.2
+modtime = 1470230151.558630200
+
+[eventtypes/UAC]
+access = read : [ * ], write : [ * ]
+export = none
+owner = admin
+version = 6.4.2
+modtime = 1469475754.877970200
+
+[views/3.3.2]
+version = 6.4.2
+modtime = 1470158677.217908300
+
+[lookups/users.csv]
+access = read : [ * ], write : [ * ]
+export = none
+owner = dbaccus
+version = 6.4.2
+modtime = 1469714152.065239300
+
+[lookups/usersfinale.csv]
+access = read : [ * ], write : [ * ]
+export = none
+owner = dbaccus
+version = 6.4.2
+modtime = 1469714161.978817600
+
+[props/WinEventLog%3ASecurity/LOOKUP-SecurityGroup]
+access = read : [ * ], write : [ * ]
+export = none
+owner = dbaccus
+version = 6.4.2
+modtime = 1469714243.109477300
+
+[transforms/securitygroups.csv]
+access = read : [ * ], write : [ * ]
+export = none
+owner = dbaccus
+version = 6.4.2
+modtime = 1469714295.889496800
+
+[savedsearches/SecurityGroup%20Violation%20%28HR%29]
+owner = dbaccus
+version = 6.4.2
+modtime = 1469716896.019796100
+
+[props/WMI%3AUSBChanges]
+owner = interns
+version = 6.4.2
+modtime = 1469745993.393513200
+
+[indexes/device_id]
+owner = interns
+version = 6.4.2
+modtime = 1469746014.420721600
+
+[props/WMI%3AUSBChanges/LOOKUP-usb_lookup]
+access = read : [ * ], write : [ * ]
+export = system
+owner = interns
+version = 6.4.2
+modtime = 1469762152.881853700
+
+[props/WinEventLog%3ASecurity/LOOKUP-host_lookup]
+access = read : [ * ], write : [ * ]
+export = system
+owner = interns
+version = 6.4.2
+modtime = 1469764101.556830100
+
+[lookups/host_lookup.csv]
+access = read : [ * ], write : [ * ]
+export = system
+owner = interns
+version = 6.4.2
+modtime = 1469764077.278435200
+
+[lookups/usb.csv]
+access = read : [ * ], write : [ * ]
+export = system
+owner = interns
+version = 6.4.2
+modtime = 1470140593.788770000
+
+[transforms/host_lookup]
+access = read : [ * ], write : [ * ]
+export = system
+owner = interns
+version = 6.4.2
+modtime = 1469797711.723627600
+
+[transforms/usb_lookup]
+access = read : [ * ], write : [ * ]
+export = system
+owner = interns
+version = 6.4.2
+modtime = 1469797719.384068000
+
+[props/WinEventLog%3AApplication/EXTRACT-Path]
+access = read : [ * ], write : [ admin ]
+owner = admin
+version = 6.4.2
+modtime = 1469816952.599582400
+
+[props/WinEventLog%3AApplication/EXTRACT-uac_user]
+access = read : [ * ], write : [ admin ]
+owner = admin
+version = 6.4.2
+modtime = 1469817396.628098400
+
+[views/3.1.18]
+version = 6.4.2
+modtime = 1470313129.297087400
+
+[savedsearches/3.1.7%20Alert]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.4.2
+modtime = 1470244030.796181300
+
+[savedsearches/3.3.2%3A%20Missing%20Forwarder]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.4.2
+modtime = 1470244038.980652600

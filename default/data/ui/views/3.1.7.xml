@@ -1,0 +1,23 @@
+
+<form>
+    <label>3.1.7</label>
+    <fieldset submitButton="false">
+        <input type="text" token="field1" searchWhenChanged="false">
+            <label>3.1 Access Control</label>
+        </input>
+        <input type="text" token="field2">
+            <label>3.2 Awareness and Training</label>
+        </input>
+    </fieldset>
+    <row>
+        <panel>
+            <table>
+                <title>Access - Default Accounts In Use</title>
+                <search ref="Access - Default Accounts In Use"></search>
+                <option name="wrap">undefined</option>
+                <option name="rowNumbers">undefined</option>
+                <option name="drilldown">row</option>
+            </table>
+        </panel>
+    </row>
+</form>

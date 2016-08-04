@@ -1,0 +1,94 @@
+  <br/>
+  <div>
+    <h1>CM-2 BASELINE CONFIGURATION</h1><br/>
+
+    <h2>Control</h2>
+    <p>
+      The organization develops, documents, and maintains under configuration control, a
+      current baseline configuration of the information system.
+    </p>
+  </div>
+
+  <div>
+    <h2>Supplemental Guidance</h2>
+    <p>
+      This control establishes a baseline configuration for the information system
+      and its constituent components including communications and connectivity-related aspects of the
+      system. The baseline configuration provides information about the components of an information
+      system (e.g., the standard software load for a workstation, server, network component, or mobile
+      device including operating system/installed applications with current version numbers and patch
+      information), network topology, and the logical placement of the component within the system
+      architecture. The baseline configuration is a documented, up-to-date specification to which the
+      information system is built. Maintaining the baseline configuration involves creating new
+      baselines as the information system changes over time. The baseline configuration of the
+      information system is consistent with the organization's enterprise architecture. Related controls:
+      CM-3, CM-6, CM-8, CM-9.
+    </p>
+  </div>
+
+  <div>
+    <h2>Control Enhancements</h2>
+    <ol class="decimal">
+      <li>The organization reviews and updates the baseline configuration of the information system:
+        <ol class="loweralpha">
+          <li>[Assignment: organization-defined frequency];</li>
+          <li>When required due to [Assignment organization-defined circumstances]; and</li>
+          <li>As an integral part of information system component installations and upgrades.</li>
+        </ol>
+      </li>
+      <li>The organization employs automated mechanisms to maintain an up-to-date, complete, accurate,
+          and readily available baseline configuration of the information system.
+        <p>
+          <u>Enhancement Supplemental Guidance:</u> Software inventory tools are examples of automated
+          mechanisms that help organizations maintain consistent baseline configurations for
+          information systems. Software inventory tools can be deployed for each operating system in
+          use within the organization (e.g., on workstations, servers, network components, mobile
+          devices) and used to track operating system version numbers, applications and types of
+          software installed on the operating systems, and current patch levels. Software inventory
+          tools can also scan information systems for unauthorized software to validate organization-
+          defined lists of authorized and unauthorized software programs.
+        </p>
+      </li>
+      <li>The organization retains older versions of baseline configurations as deemed necessary to support rollback.</li>
+      <li>The organization:
+        <ol class="loweralpha">
+          <li>Develops and maintains [Assignment: organization-defined list of software programs not
+              authorized to execute on the information system]; and</li>
+          <li>Employs an allow-all, deny-by-exception authorization policy to identify software allowed to
+              execute on the information system.</li>
+        </ol>
+      </li>
+      <li>The organization:
+        <ol class="loweralpha">
+          <li>Develops and maintains [Assignment: organization-defined list of software programs 
+              authorized to execute on the information system]; and</li>
+          <li>Employs a deny-all, permit-by-exception authorization policy to identify software allowed to
+              execute on the information system.</li>
+        </ol>
+      </li>
+      <li>The organization maintains a baseline configuration for development and test environments that is
+          managed separately from the operational baseline configuration.</li>
+    </ol>
+  </div>
+
+  <div>
+    <h2>References</h2>
+    <p>NIST Special Publication 800-128.</p>
+  </div>
+
+  <div>
+    <h2>ICS Supplemental Guidance</h2>
+    <p>None</p>
+  </div>
+
+  <div>
+    <h2>Priority and Baseline Allocation</h2>
+    <table border="1" cellpadding="5" bgcolor="#ddd">
+      <tr>
+        <td><b>P1</b></td>
+        <td><b>LOW</b> CM-2</td>
+        <td><b>MOD</b> CM-2 (1) (3) (4)</td>
+        <td><b>HIGH</b> CM-2 (1) (2) (3) (5) (6)</td>
+      </tr>
+    </table>
+  </div>

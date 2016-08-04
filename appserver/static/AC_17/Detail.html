@@ -1,0 +1,118 @@
+  <br/>
+  <div>
+    <h1>AC-17 REMOTE ACCESS</h1><br/>
+
+    <h2>Control</h2>
+    <p>
+      The organization:<br/>
+      <ol class="loweralpha">
+        <li>Documents allowed methods of remote access to the information system;</li>
+        <li>Establishes usage restrictions and implementation guidance for each allowed remote access method;</li>
+        <li>Monitors for unauthorized remote access to the information system;</li>
+        <li>Authorizes remote access to the information system prior to connection; and</li>
+        <li>Enforces requirements for remote connections to the information system.</li>
+      </ol>
+    </p>
+  </div>
+
+  <div>
+    <h2>Supplemental Guidance</h2>
+    <p>
+      This control requires explicit authorization prior to allowing remote access
+      to an information system without specifying a specific format for that authorization. For example,
+      while the organization may deem it appropriate to use a system interconnection agreement to
+      authorize a given remote access, such agreements are not required by this control. Remote access
+      is any access to an organizational information system by a user (or process acting on behalf of a
+      user) communicating through an external network (e.g., the Internet). Examples of remote access
+      methods include dial-up, broadband, and wireless (see AC-18 for wireless access). A virtual
+      private network when adequately provisioned with appropriate security controls, is considered an
+      internal network (i.e., the organization establishes a network connection between organization-
+      controlled endpoints in a manner that does not require the organization to depend on external
+      networks to protect the confidentiality or integrity of information transmitted across the network).
+      Remote access controls are applicable to information systems other than public web servers or
+      systems specifically designed for public access. Enforcing access restrictions associated with
+      remote connections is accomplished by control AC-3. Related controls: AC-3, AC-18, AC-20,
+      IA-2, IA-3, IA-8, MA-4.
+    </p>
+  </div>
+
+  <div>
+    <h2>Control Enhancements</h2>
+    <ol class="decimal">
+      <li>The organization employs automated mechanisms to facilitate the monitoring and control of
+          remote access methods.
+        <p>
+          <u>Enhancement Supplemental Guidance:</u> Automated monitoring of remote access sessions allows
+          organizations to audit user activities on a variety of information system components (e.g.,
+          servers, workstations, notebook/laptop computers) and to ensure compliance with remote
+          access policy.
+        </p>
+      </li>
+      <li>The organization uses cryptography to protect the confidentiality and integrity of remote access
+          sessions.
+        <p>
+          <u>Enhancement Supplemental Guidance:</u>The encryption strength of mechanism is selected based
+          on the security categorization of the information. Related controls: SC-8, SC-9, SC-13.
+        </p>
+      </li>
+      <li>The information system routes all remote accesses through a limited number of managed access
+          control points.
+        <p>
+          <u>Enhancement Supplemental Guidance:</u> Related control: SC-7.
+        </p>
+      </li>
+      <li>The organization authorizes the execution of privileged commands and access to security-relevant
+          information via remote access only for compelling operational needs and documents the rationale
+          for such access in the security plan for the information system.
+        <p>
+          <u>Enhancement Supplemental Guidance:</u> Related control: AC-6.
+        </p>
+      </li>
+      <li>The organization monitors for unauthorized remote connections to the information system
+          [Assignment: organization-defined frequency], and takes appropriate action if an unauthorized
+          connection is discovered.</li>
+      <li>The organization ensures that users protect information about remote access mechanisms from
+          unauthorized use and disclosure.</li>
+      <li>The organization ensures that remote sessions for accessing [Assignment: organization-defined
+          list of security functions and security-relevant information] employ [Assignment: organization-
+          defined additional security measures] and are audited.
+        <p>
+          <u>Enhancement Supplemental Guidance:</u> Additional security measures are typically above and
+          beyond standard bulk or session layer encryption (e.g., Secure Shell [SSH], Virtual Private
+          Networking [VPN] with blocking mode enabled). Related controls: SC-8, SC-9.
+        </p>
+      </li>
+      <li>The organization disables [Assignment: organization-defined networking protocols within the
+          information system deemed to be nonsecure] except for explicitly identified components in
+          support of specific operational requirements.
+        <p>
+          <u>Enhancement Supplemental Guidance:</u> The organization can either make a determination of the
+          relative security of the networking protocol or base the security decision on the assessment of
+          other entities. Bluetooth and peer-to-peer networking are examples of less than secure
+          networking protocols.
+        </p>
+      </li>
+    </ol>
+  </div>
+
+  <div>
+    <h2>References</h2>
+    <p>NIST Special Publications 800-46, 800-77, 800-113, 800-114, 800-121.</p>
+  </div>
+
+  <div>
+    <h2>ICS Supplemental Guidance</h2>
+    <p>None</p>
+  </div>
+
+  <div>
+    <h2>Priority and Baseline Allocation</h2>
+    <table border="1" cellpadding="5" bgcolor="#ddd">
+      <tr>
+        <td><b>P1</b></td>
+        <td><b>LOW</b> AC-17</td>
+        <td><b>MOD</b> AC-17 (1) (2) (3) (4) (5) (7) (8)</td>
+        <td><b>HIGH</b> AC-17 (1) (2) (3) (4) (5) (7) (8)</td>
+      </tr>
+    </table>
+  </div>
