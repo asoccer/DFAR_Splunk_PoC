@@ -1,5 +1,10 @@
 #DFARS for Splunk (PoC)
 
+![alt text](https://github.com/asoccer/DFAR_Splunk_PoC/blob/8b10400ab80c4529e2ab1f93a97acca4f8ae1bdb/Resources/DFAR_IMAGE.png?raw=true "DFAR Logo Text 1")
+
+
+
+
 ###Introduction
 
 Hello and welcome to the splunk DFAR landing page. The following PoC is currently being built by 
