@@ -14,8 +14,8 @@ The following PoC covers the following controls
 
 Control | Description | Creator
 --- | --- | ---
-[3.1.7](https://github.com/asoccer/DFAR_Splunk_PoC/wiki/Control-3.1.07) | Prevent non-privileged users from executing privileged functions and audit the execution of such functions | Abigail Watson
-3.1.8 | Limit unsuccessful logon attempts | Daunte Baccus
+[3.1.07](https://github.com/asoccer/DFAR_Splunk_PoC/wiki/Control-3.1.07) | Prevent non-privileged users from executing privileged functions and audit the execution of such functions | Abigail Watson
+3.1.08 | Limit unsuccessful logon attempts | Daunte Baccus
 [3.1.18](https://github.com/asoccer/DFAR_Splunk_PoC/wiki/Control-3.1.18) | Control Connection of Mobile Devices | Adam Dost
 [3.1.21](https://github.com/asoccer/DFAR_Splunk_PoC/wiki/Control-3.1.21) | Limit use of organizational portable storage devices on external information systems | Adam Dost
 [3.3.02](https://github.com/asoccer/DFAR_Splunk_PoC/wiki/Control-3.3.02) | Ensure that the actions of individual information system users can be uniquely traced to those users tso they can be hold accountable for their actions | Abigail Watson
