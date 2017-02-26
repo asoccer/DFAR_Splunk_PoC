@@ -1,3 +1,5 @@
+EDIT: As of August 2016 this Demo/PoC is no longer being worked on. Please contact someone at Splunk for more information as I am not involved in this project anymore nor is anyone listed either.
+
 
 ![alt text](https://github.com/asoccer/DFAR_Splunk_PoC/blob/8b10400ab80c4529e2ab1f93a97acca4f8ae1bdb/Resources/DFAR_IMAGE.png?raw=true "DFAR Logo Text 1")
 
@@ -9,9 +11,9 @@
 
 Hello and welcome to the splunk DFAR landing page. The following PoC is currently being built by 
 
-* Adam Dost (adost@splunk.com)
-* Abigail Watson (awatson@splunk.com)
-* Daunte Baccus (dbaccus@splunk.com)
+* Adam Dost 
+* Abigail Watson
+* Daunte Baccus 
 
 The following PoC covers the following controls
 
