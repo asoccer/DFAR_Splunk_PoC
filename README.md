@@ -7,7 +7,7 @@ EDIT: As of August 2016 this Demo/PoC is no longer being worked on. Please conta
 #DFARS for Splunk (PoC)
 
 
-###Introduction
+### Introduction
 
 Hello and welcome to the splunk DFAR landing page. The following PoC is currently being built by 
 
